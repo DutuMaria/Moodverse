@@ -10,7 +10,6 @@
 
 ## Moodverse Website Description
 
-[//]: # (TODO PUNE DIAGRAMELE CA POZE)
 ## Diagrams
 ### UML
 ![](/img/uml_diagram.png)
