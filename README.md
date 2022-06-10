@@ -8,6 +8,7 @@
 - [Gîrbea Monica-Andreea](https://github.com/monicaandreea)
 - [Sîmpetru Eva-Maria](https://github.com/evasimpetru28)
 
+
 ## Moodverse Website Description
 
 ## Diagrams
