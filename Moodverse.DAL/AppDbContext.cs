@@ -40,6 +40,29 @@ namespace Moodverse.DAL
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>(b =>
+            {
+                b.HasOne(p => p.Background)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(p => p.IdBackground);
+
+                b.HasOne(p => p.Ambience)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(p => p.IdAmbience);
+
+                b.HasOne(p => p.DailyQuote)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(p => p.IdDailyQuote);
+
+                b.HasOne(p => p.ToDoList)
+                    .WithOne(p => p.User)
+                    .HasForeignKey<User>(p => p.IdToDoList);
+
+                b.HasOne(p => p.Streak)
+                    .WithOne(p => p.User)
+                    .HasForeignKey<User>(p => p.IdStreak);
+            });
+
             modelBuilder.ApplyConfiguration(new BackgroundConfiguration());
             modelBuilder.ApplyConfiguration(new AmbienceConfiguration());
             modelBuilder.ApplyConfiguration(new DailyQuoteConfiguration());
