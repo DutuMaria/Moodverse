@@ -13,8 +13,9 @@
 [//]: # (TODO PUNE DIAGRAMELE CA POZE)
 ## Diagrams
 ### UML
-
+![](/img/uml_diagram.png)
 ### Actions
+![](/img/state_machine_diagram.png)
 
 ## Cerinte proiect
 ### A. Implementarea - notă între 1 și 10
@@ -31,4 +32,3 @@ Acesta constă din următoarele părți:
 - [ ] folosirea unui build tool - **1 pct**
 - [ ] refactoring (minim 1), code standards - **1 pct**
 - [ ] design patterns - **1 pct**
-
