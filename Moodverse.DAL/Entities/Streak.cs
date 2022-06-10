@@ -13,6 +13,7 @@ namespace Moodverse.DAL.Entities
 
         [Key]
         public int Id { get; set; }
+        public int UserId { get; set; }
         public int NumberOfDays { get; set; }
         public DateTime LastDate { get; set; }
         public virtual User User { get; set; }
