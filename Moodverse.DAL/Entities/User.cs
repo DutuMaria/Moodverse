@@ -10,12 +10,12 @@ namespace Moodverse.DAL.Entities
         {
         }
 
-        public int IdBackground { get; set; }
+        public int? IdBackground { get; set; }
         //public int IdTimer { get; set; }
-        public int IdAmbience { get; set; }
-        public int IdDailyQuote { get; set; }
-        public int IdToDoList { get; set; }
-        public int IdStreak { get; set; }
+        public int? IdAmbience { get; set; }
+        public int? IdDailyQuote { get; set; }
+        public int? IdToDoList { get; set; }
+        public int? IdStreak { get; set; }
 
         public string RefreshToken { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }

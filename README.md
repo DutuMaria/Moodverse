@@ -32,3 +32,9 @@ Acesta constă din următoarele părți:
 - [ ] folosirea unui build tool - **1 pct**
 - [ ] refactoring (minim 1), code standards - **1 pct**
 - [ ] design patterns - **1 pct**
+
+### Comenzi migratii
+
+dotnet ef --startup-project Moodverse --project Moodverse.DAL migrations add UpdatedEntites
+
+dotnet ef --startup-project Moodverse --project Moodverse.DAL database update
