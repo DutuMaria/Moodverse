@@ -1,0 +1,65 @@
+$color-1: #CCB5F5;
+$color-2: #F5C9C4;
+$color-3: #A9D4F5;
+$color-4: #F5F090;
+$color-5: #9DF5C7;
+
+body{
+    background-image: linear-gradient(to bottom right, $color-1, $color-2);
+}
+
+.form_template_login{
+    margin: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form_template_register{
+    margin: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login_form{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 38%;
+    padding-right: 40%;
+}
+
+#form_header{
+    text-align: center;
+    padding-top: 5%;
+}
+
+#login_button{
+    padding-left: 45%;
+    padding-right: 40%;
+    margin-left: 4.5%;
+    margin-right: 4.5%;
+    margin-bottom: 5%;
+    background-image: linear-gradient(to bottom right, $color-1, $color-2);
+    color: black;
+}
+
+#page_header{
+    font-size: 80px;
+}
+
+.title_div{
+    position: absolute;
+    top: 9.6%;
+    left: 25%;
+    font-family: 'Julius Sans One';font-size: 22px;
+}
+
+.register_form{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 38%;
+    padding-right: 40%;
+}

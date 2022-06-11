@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="login.component.scss" type="text/scss"/>
+    <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <div class="title_div">
+            <h1 id="page_header">Moodverse</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="form_template_login">
+            <h1 id="form_header">{{ text }}</h1>
+            <form [formGroup]= "loginForm" (ngSubmit)="doLogin()">
+                <div class="login_form">
+                    <label class="form_rows">Username</label>
+                    <br>
+                    <input type="text" placeholder="Your username" required>
+
+                    <br>
+
+                    <label class="form_rows">Password </label>
+                    <br>
+                    <input type="text" placeholder="Your password" required>
+                </div>
+
+               <button type="button" class="btn btn-dark" id="login_button">Login</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
+
+
+
+
+
