@@ -6,29 +6,23 @@ $color-5: #9DF5C7;
 
 body{
     background-image: linear-gradient(to bottom right, $color-1, $color-2);
+    height: 100vh;
 }
 
 .form_template_login{
-    margin: 10%;
+    // margin: 10%;
     margin-left: 25%;
     margin-right: 25%;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.form_template_register{
-    margin: 10%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top: 100px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .login_form{
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 38%;
-    padding-right: 40%;
+    // padding-top: 5px;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 0px;
 }
 
 #form_header{
@@ -42,7 +36,7 @@ body{
     margin-left: 4.5%;
     margin-right: 4.5%;
     margin-bottom: 5%;
-    background-image: linear-gradient(to bottom right, $color-1, $color-2);
+    // background-image: linear-gradient(to bottom right, $color-1, $color-2);
     color: black;
 }
 
@@ -51,15 +45,9 @@ body{
 }
 
 .title_div{
-    position: absolute;
-    top: 9.6%;
+    position: relative;
+    top: 120px;
     left: 25%;
-    font-family: 'Julius Sans One';font-size: 22px;
-}
-
-.register_form{
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 38%;
-    padding-right: 40%;
+    font-family: 'Julius Sans One';
+    font-size: 22px;
 }

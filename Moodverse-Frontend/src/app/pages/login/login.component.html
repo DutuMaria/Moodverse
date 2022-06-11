@@ -19,18 +19,26 @@
             <h1 id="form_header">{{ text }}</h1>
             <form [formGroup]= "loginForm" (ngSubmit)="doLogin()">
                 <div class="login_form">
-                    <label class="form_rows">Username</label>
-                    <br>
-                    <input type="text" placeholder="Your username" required>
+                    <div class="form-group">
+                        <label class="form_rows">Email</label>
+                        <br>
+                        <input class="form-control" 
+                        placeholder="Your username"
+                        [ngClass]="loginForm.controls['email'].errors ? 'is-invalid' : ''"
+                        formControlName="email"  required />
+                    </div>
 
-                    <br>
-
-                    <label class="form_rows">Password </label>
-                    <br>
-                    <input type="text" placeholder="Your password" required>
+                    <div class="form-group">
+                        <label class="form_rows">Password </label>
+                        <br>
+                        <input class="form-control" 
+                        placeholder="Your password"
+                        [ngClass]="loginForm.controls['password'].errors ? 'is-invalid' : ''"
+                        formControlName="password" required />
+                    </div>
                 </div>
-
-               <button type="button" class="btn btn-dark" id="login_button">Login</button>
+                <br>
+               <button [disabled]="loginForm.invalid" type="submit" class="btn btn-dark" id="login_button">{{ text }}</button>
             </form>
         </div>
     </main>
