@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -10,11 +10,11 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 
 export class RegisterComponent implements OnInit {
-  public registerForm!:FormGroup;
+  public registerForm!:UntypedFormGroup;
   public text:string = '';
 
   // cu formBuilder se creeaza un form group
-  constructor(private formBuilder:FormBuilder, private router:Router, private authenticationService:AuthenticationService) { }
+  constructor(private formBuilder:UntypedFormBuilder, private router:Router, private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
     this.text = "REGISTER";
