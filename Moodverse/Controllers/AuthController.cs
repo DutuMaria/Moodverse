@@ -40,9 +40,11 @@ namespace Moodverse.Controllers
         {
             var result = await _authManager.Login(model);
 
-            if (result.Success)
-                return Ok("Logged in");
-            else return BadRequest("No user found");
+            return Ok(result);
+
+            //if (result.Success)
+            //    return Ok("Logged in");
+            //else return BadRequest("No user found");
         }
 
         [HttpPost("refresh")]

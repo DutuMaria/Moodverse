@@ -14,6 +14,8 @@ body{
 // }
 
 .form_template_register{
+    position: relative;
+    top: 100px;
     margin: 10%;
     margin-left: 25%;
     margin-right: 25%;
@@ -43,9 +45,8 @@ body{
 
 .title_div{
     position: relative;
-    top: 30px;
+    top: 105px;
     left: 25%;
-    font-family: 'Julius Sans One';
     font-size: 22px;
 }
 
@@ -54,4 +55,8 @@ body{
     padding-bottom: 5%;
     padding-left: 20%;
     padding-right: 20%;
+}
+
+h1{
+    font-family: 'Julius Sans One';
 }

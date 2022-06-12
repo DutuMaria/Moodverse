@@ -10,6 +10,8 @@ using Moodverse.DAL.Entities;
 
 namespace Moodverse.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class StreakController : ControllerBase
     {
         // injectam contextul
@@ -89,7 +91,7 @@ namespace Moodverse.Controllers
         [HttpGet("GetLastDateById/{id}")]
         public async Task<IActionResult> GetLastDateById([FromRoute] int id)
         {
-            var lastDate = DateTime.Now;
+            DateTime lastDate = DateTime.Now;
             var streaks = await _context
                 .Streaks
                 .ToListAsync();
