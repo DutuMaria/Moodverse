@@ -16,14 +16,24 @@
           <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
           <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         </div>
-        <div class="profil-streak">
+        <div class="profil-streak" *ngIf = "!isEnabled">
             <ul>
-                <li class="profil-list">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                </li>
-                <li class="profil-list">
-                    <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span class="textbuton">Profile</span></button>
-                </li>
+                <div id="streak">
+                    <li class="profil-list" >
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </li>
+                </div>
+                <div id="profil">
+                    <li class="profil-list" >
+                        <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span class="textbuton">Profile</span></button>
+                    </li>
+                </div>
+                <div id="logout">
+                    <li class="profil-list" >
+                        <button type="button" class="btn btn-light"><i class="fa-solid fa-arrow-right-from-bracket"></i><br><span class="textbuton">Log Out</span></button>
+                    </li>
+                </div>
+
             </ul>
         </div>
 
@@ -33,32 +43,31 @@
                     <button type="button" class="btn btn-light" id="background" (click)="backgroundsFunction()"><i class="fa-solid fa-image"></i><br><span class="textbuton">Background</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="ambience"><i class="fa-solid fa-headphones"></i><br><span class="textbuton">Ambience</span></button>
+                    <button type="button" class="btn btn-light" id="ambience" (click)="ambiencesFunction()"><i class="fa-solid fa-headphones"></i><br><span class="textbuton">Ambience</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="quote"><i class="fa-solid fa-quote-left"></i><br><span class="textbuton">Daily Quote</span></button>
+                    <button type="button" class="btn btn-light" id="quote" (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span class="textbuton">Daily Quote</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="todolist"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
+                    <button type="button" class="btn btn-light" id="todolist" (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
                 </li>    
             </ul>
         </div>
-<!--
-        <div class="example-boundary">
-            <div *ngIf="backgrounds"  class="float-div" cdkDragBoundary=".example-boundary" cdkDrag>
-                Ceva
-            </div>
-        </div> -->
 
-        <div class="example-box" cdkDrag>
-            I can only be dragged using the handle
-          
-            <div class="example-handle" cdkDragHandle>
-              <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-              </svg>
-            </div>
+        <div *ngIf="backgrounds"  class="float-div" id="float-background" cdkDrag>
+            Background images
+        </div>
+
+        <div *ngIf="ambiences"  class="float-div" id="float-ambience" cdkDrag>
+            Ambience sounds
+        </div>
+
+        <div *ngIf="quotes"  class="float-div" id="float-quote" cdkDrag>
+            Daily quote text
+        </div>
+
+        <div *ngIf="todolists"  class="float-div" id="float-todolist" cdkDrag>
+            To do list text
         </div>
         
     </div>
