@@ -33,7 +33,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            await _context.ToDoList.AddAsync(toDoList);
+            await _context.ToDoLists.AddAsync(toDoList);
 
             await _context.SaveChangesAsync();
 
@@ -44,7 +44,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetToDoListById([FromRoute] int id)
         {
             var toDoList = await _context
-                .ToDoList
+                .ToDoLists
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
@@ -56,7 +56,7 @@ namespace Moodverse.Controllers
         {
             var userId = 0;
             var lists = await _context
-                .ToDoList
+                .ToDoLists
                 .ToListAsync();
             foreach(var l in lists)
             {
@@ -75,7 +75,7 @@ namespace Moodverse.Controllers
         {
             var title = "";
             var lists = await _context
-                .ToDoList
+                .ToDoLists
                 .ToListAsync();
             foreach(var l in lists)
             {
@@ -94,7 +94,7 @@ namespace Moodverse.Controllers
         {
             var progress = 0.0m;
             var lists = await _context
-                .ToDoList
+                .ToDoLists
                 .ToListAsync();
             foreach(var l in lists)
             {
@@ -125,7 +125,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetToDoLists()
         {
             var toDoLists = await _context
-                .ToDoList
+                .ToDoLists
                 .ToListAsync();
             return Ok(toDoLists);
         }
@@ -135,7 +135,7 @@ namespace Moodverse.Controllers
         [Authorize("admin")]
         public async Task<IActionResult> UpdateToDoList([FromRoute] int id, [FromBody] ToDoList toDoList)
         {
-            var _toDoList = await _context.ToDoList.FirstOrDefaultAsync(x => x.Id == id);
+            var _toDoList = await _context.ToDoLists.FirstOrDefaultAsync(x => x.Id == id);
             if (_toDoList != null)
             {
                 _toDoList.Id = toDoList.Id;
@@ -161,7 +161,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            var toDoList = await _context.ToDoList.FirstOrDefaultAsync(x => x.Id == id);
+            var toDoList = await _context.ToDoLists.FirstOrDefaultAsync(x => x.Id == id);
 
             _context.Remove(toDoList);
             await _context.SaveChangesAsync();
