@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -10,16 +10,15 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formBuilder:UntypedFormBuilder, private router:Router, private authenticationService:AuthenticationService) { }
+  constructor(private formBuilder:FormBuilder, private router:Router, private authenticationService:AuthenticationService) { }
   public text:string = '';
-
-  public loginForm!:UntypedFormGroup;
-
+  public loginForm!:FormGroup;
   public logged:boolean = false;
   public notLogged:boolean = true;
 
   ngOnInit(): void {
     this.text = "LOGIN";
+    
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -34,10 +33,15 @@ export class LoginComponent implements OnInit {
       this.authenticationService
         .login(this.loginForm.value)
         .subscribe((response: any) => {
-          console.log(response);
+          if (response.success == false){
+            alert("Username or password invalid");
+            this.loginForm.reset();
+          }
+          else {
+            sessionStorage.setItem("currentUser", this.loginForm.value.email);
+            this.router.navigate(['/index']);
+          }
         });
-      sessionStorage.setItem("currentUser", this.loginForm.value.email);
-      this.router.navigate(['/index']);
     }
   }
 }

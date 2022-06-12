@@ -10,6 +10,8 @@ using Moodverse.DAL.Entities;
 
 namespace Moodverse.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AmbienceController : ControllerBase
     {
         // injectam contextul
@@ -33,7 +35,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            await _context.Ambience.AddAsync(ambience);
+            await _context.Ambiences.AddAsync(ambience);
 
             await _context.SaveChangesAsync();
 
@@ -44,7 +46,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetAmbienceById([FromRoute] int id)
         {
             var ambience = await _context
-                .Ambience
+                .Ambiences
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
@@ -58,7 +60,7 @@ namespace Moodverse.Controllers
         {
             var sound = "";
             var ambiences = await _context
-                .Ambience
+                .Ambiences
                 .ToListAsync();
             foreach(var amb in ambiences)
             {
@@ -78,7 +80,7 @@ namespace Moodverse.Controllers
         {
             var ambienceName = "";
             var ambiences = await _context
-                .Ambience
+                .Ambiences
                 .ToListAsync();
             foreach(var amb in ambiences)
             {
@@ -97,7 +99,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetAmbiences()
         {
             var ambiences = await _context
-                .Ambience
+                .Ambiences
                 .ToListAsync();
             return Ok(ambiences);
         }
@@ -107,7 +109,7 @@ namespace Moodverse.Controllers
         [Authorize("admin")]
         public async Task<IActionResult> UpdateAmbience([FromRoute] int id, [FromBody] Ambience ambience)
         {
-            var _ambience = await _context.Ambience.FirstOrDefaultAsync(x => x.Id == id);
+            var _ambience = await _context.Ambiences.FirstOrDefaultAsync(x => x.Id == id);
             if (_ambience != null)
             {
                 _ambience.Id = ambience.Id;
@@ -130,7 +132,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            var ambience = await _context.Ambience.FirstOrDefaultAsync(x => x.Id == id);
+            var ambience = await _context.Ambiences.FirstOrDefaultAsync(x => x.Id == id);
 
             _context.Remove(ambience);
             await _context.SaveChangesAsync();

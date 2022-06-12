@@ -10,6 +10,8 @@ using Moodverse.DAL.Entities;
 
 namespace Moodverse.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BackgroundController : ControllerBase
     {
         // injectam contextul
@@ -33,7 +35,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            await _context.Background.AddAsync(background);
+            await _context.Backgrounds.AddAsync(background);
 
             await _context.SaveChangesAsync();
 
@@ -44,7 +46,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetBackgroundById([FromRoute] int id)
         {
             var background = await _context
-                .Background
+                .Backgrounds
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
@@ -57,7 +59,7 @@ namespace Moodverse.Controllers
         {
             var image = "";
             var backgrounds = await _context
-                .Background
+                .Backgrounds
                 .ToListAsync();
             foreach(var bck in backgrounds)
             {
@@ -75,7 +77,7 @@ namespace Moodverse.Controllers
         {
             var backgroundName = "";
             var backgrounds = await _context
-                .Background
+                .Backgrounds
                 .ToListAsync();
             foreach(var bck in backgrounds)
             {
@@ -94,7 +96,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetBackgrounds()
         {
             var backgrounds = await _context
-                .Background
+                .Backgrounds
                 .ToListAsync();
             return Ok(backgrounds);
         }
@@ -105,7 +107,7 @@ namespace Moodverse.Controllers
         [Authorize("admin")]
         public async Task<IActionResult> UpdateBackground([FromRoute] int id, [FromBody] Background background)
         {
-            var _background = await _context.Background.FirstOrDefaultAsync(x => x.Id == id);
+            var _background = await _context.Backgrounds.FirstOrDefaultAsync(x => x.Id == id);
             if (_background != null)
             {
                 _background.Id = background.Id;
@@ -129,7 +131,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            var background = await _context.Background.FirstOrDefaultAsync(x => x.Id == id);
+            var background = await _context.Backgrounds.FirstOrDefaultAsync(x => x.Id == id);
 
             _context.Remove(background);
             await _context.SaveChangesAsync();

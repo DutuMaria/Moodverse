@@ -10,6 +10,8 @@ using Moodverse.DAL.Entities;
 
 namespace Moodverse.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class StreakController : ControllerBase
     {
         // injectam contextul
@@ -32,10 +34,10 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            streak.LastDate = LastDate.Today;
+            streak.LastDate = DateTime.Today;
             streak.NumberOfDays = 1;
 
-            await _context.Streak.AddAsync(streak);
+            await _context.Streaks.AddAsync(streak);
 
             await _context.SaveChangesAsync();
 
@@ -46,7 +48,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetStreakById([FromRoute] int id)
         {
             var streak = await _context
-                .Streak
+                .Streaks
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
@@ -59,20 +61,20 @@ namespace Moodverse.Controllers
         {
             var userId = 0;
             var streaks = await _context
-                .Streak
+                .Streaks
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
-            return Ok(userId.UserId);
+            return Ok(userId);
         }
 
 
         [HttpGet("GetNumberOfDaysById/{id}")]
         public async Task<IActionResult> GetNumberOfDaysById([FromRoute] int id)
         {
-            var nod = "";
+            var nod = 0;
             var streaks = await _context
-                .Streak
+                .Streaks
                 .ToListAsync();
             foreach(var stk in streaks)
             {
@@ -89,9 +91,9 @@ namespace Moodverse.Controllers
         [HttpGet("GetLastDateById/{id}")]
         public async Task<IActionResult> GetLastDateById([FromRoute] int id)
         {
-            var lastDate = "";
+            DateTime lastDate = DateTime.Now;
             var streaks = await _context
-                .Streak
+                .Streaks
                 .ToListAsync();
             foreach(var stk in streaks)
             {
@@ -128,12 +130,12 @@ namespace Moodverse.Controllers
         [HttpPut("UpdateStreak/{id}")]
         public async Task<IActionResult> UpdateStreak([FromRoute] int id, [FromBody] Streak streak)
         {
-            var _streak = await _context.Streak.FirstOrDefaultAsync(x => x.Id == id);
+            var _streak = await _context.Streaks.FirstOrDefaultAsync(x => x.Id == id);
             if (_streak != null)
             {
-                var yesterday = DateTime.Today.AddDays(-1).toString("yyyy-MM-dd");
+                var yesterday = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
 
-                if (_streak.LastDate.toString("yyyy-MM-dd") == yesterday)
+                if (_streak.LastDate.ToString("yyyy-MM-dd") == yesterday)
                 {
                     _streak.NumberOfDays += 1;
                 }

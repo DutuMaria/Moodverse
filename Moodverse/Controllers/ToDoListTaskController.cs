@@ -10,6 +10,8 @@ using Moodverse.DAL.Entities;
 
 namespace Moodverse.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ToDoListTaskController : ControllerBase
     {
         // injectam contextul
@@ -33,7 +35,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            await _context.ToDoListTask.AddAsync(toDoListTask);
+            await _context.ToDoListTasks.AddAsync(toDoListTask);
 
             await _context.SaveChangesAsync();
 
@@ -44,7 +46,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetToDoListTaskById([FromRoute] int id)
         {
             var toDoListTask = await _context
-                .ToDoListTask
+                .ToDoListTasks
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
@@ -55,9 +57,9 @@ namespace Moodverse.Controllers
         [HttpGet("GetToDoListIdById/{id}")]
         public async Task<IActionResult> GetToDoListIdById([FromRoute] int id)
         {
-            var listId = "";
+            var listId = 0;
             var tasks = await _context
-                .ToDoListTask
+                .ToDoListTasks
                 .ToListAsync();
             foreach(var t in tasks)
             {
@@ -74,9 +76,9 @@ namespace Moodverse.Controllers
         [HttpGet("GetDoneById/{id}")]
         public async Task<IActionResult> GetDoneById([FromRoute] int id)
         {
-            var done = "";
+            var done = 0;
             var tasks = await _context
-                .ToDoListTask
+                .ToDoListTasks
                 .ToListAsync();
             foreach(var t in tasks)
             {
@@ -95,7 +97,7 @@ namespace Moodverse.Controllers
         {
             var descr = "";
             var tasks = await _context
-                .ToDoListTask
+                .ToDoListTasks
                 .ToListAsync();
             foreach(var t in tasks)
             {
@@ -113,7 +115,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetAllToDoListTasksByToDoListId([FromRoute] int id)
         {
             var tasks = await _context
-                .ToDoListTask
+                .ToDoListTasks
                 .Where(x => x.ToDoListId == id)
                 .ToListAsync();
 
@@ -126,7 +128,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetToDoListTasks()
         {
             var toDoListTasks = await _context
-                .ToDoListTask
+                .ToDoListTasks
                 .ToListAsync();
             return Ok(toDoListTasks);
         }
@@ -136,7 +138,7 @@ namespace Moodverse.Controllers
         [Authorize("user")]
         public async Task<IActionResult> UpdateToDoListTask([FromRoute] int id, [FromBody] ToDoListTask toDoListTask)
         {
-            var _toDoListTask = await _context.ToDoListTask.FirstOrDefaultAsync(x => x.Id == id);
+            var _toDoListTask = await _context.ToDoListTasks.FirstOrDefaultAsync(x => x.Id == id);
             if (_toDoListTask != null)
             {
                 _toDoListTask.Id = toDoListTask.Id;
@@ -160,7 +162,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            var toDoListTask = await _context.ToDoListTask.FirstOrDefaultAsync(x => x.Id == id);
+            var toDoListTask = await _context.ToDoListTasks.FirstOrDefaultAsync(x => x.Id == id);
 
             _context.Remove(toDoListTask);
             await _context.SaveChangesAsync();
