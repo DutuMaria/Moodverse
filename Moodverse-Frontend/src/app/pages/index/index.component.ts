@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
   public isEnabled: boolean = true;
-
+  backgrounds: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -18,6 +18,9 @@ export class IndexComponent implements OnInit {
     if("currentUser" in sessionStorage){
       this.isEnabled = false;
     }
+    
+   backgroundsFunction(){
+    if(this.backgrounds == true) this.backgrounds = false;
+    else this.backgrounds = true;
   }
-
 }

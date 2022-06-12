@@ -2,12 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.component.scss" type="text/scss"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Moodverse</title>
 </head>
 <body>
-    <h1>Moodverse</h1>
-    <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-    <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 
+    <div class="grid-container">
+        <div class="titlu">
+          <h1>Moodverse</h1>
+          <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+          <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        </div>
+        <div class="profil-streak">
+            <ul>
+                <li class="profil-list">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                </li>
+                <li class="profil-list">
+                    <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span class="textbuton">Profile</span></button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="meniu">
+            <ul>
+                <li>
+                    <button type="button" class="btn btn-light" id="background" (click)="backgroundsFunction()"><i class="fa-solid fa-image"></i><br><span class="textbuton">Background</span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-light" id="ambience"><i class="fa-solid fa-headphones"></i><br><span class="textbuton">Ambience</span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-light" id="quote"><i class="fa-solid fa-quote-left"></i><br><span class="textbuton">Daily Quote</span></button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-light" id="todolist"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
+                </li>    
+            </ul>
+        </div>
+<!--
+        <div class="example-boundary">
+            <div *ngIf="backgrounds"  class="float-div" cdkDragBoundary=".example-boundary" cdkDrag>
+                Ceva
+            </div>
+        </div> -->
+
+        <div class="example-box" cdkDrag>
+            I can only be dragged using the handle
+          
+            <div class="example-handle" cdkDragHandle>
+              <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+              </svg>
+            </div>
+        </div>
+        
+    </div>
 </body>
 </html>
