@@ -6,16 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+  public isEnabled: boolean = true;
   backgrounds: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.getUserStatus();
   }
 
-  backgroundsFunction(){
+  getUserStatus(){
+    if("currentUser" in sessionStorage){
+      this.isEnabled = false;
+    }
+    
+   backgroundsFunction(){
     if(this.backgrounds == true) this.backgrounds = false;
     else this.backgrounds = true;
   }
-
 }

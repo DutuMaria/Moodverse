@@ -29,20 +29,15 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
-    if(this.loginForm.valid){
-      this.authenticationService.login(this.loginForm.value)
-      .subscribe((response:any)=>{
-        // console.log(response);
-        // this.dashboardComponent.isNotLogged = false;
-        // this.dashboardComponent.isLogged = true;
-        // localStorage.setItem('currentUser', this.loginForm.value.email);
-        // this.loggedService.setLogged();
-        // this.notLogged = this.loggedService.getIsNotLogged();
-        // this.logged = this.loggedService.getIsLogged();
-        // console.log("Not ", this.notLogged);
-        // console.log("log ", this.logged);
-        this.router.navigateByUrl('/index');
-      })
+    console.log(this.loginForm);
+    if (this.loginForm.valid) {
+      this.authenticationService
+        .login(this.loginForm.value)
+        .subscribe((response: any) => {
+          console.log(response);
+        });
+      sessionStorage.setItem("currentUser", this.loginForm.value.email);
+      this.router.navigate(['/index']);
     }
   }
 }

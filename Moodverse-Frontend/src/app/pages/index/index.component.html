@@ -9,11 +9,12 @@
     <title>Moodverse</title>
 </head>
 <body>
+
     <div class="grid-container">
         <div class="titlu">
-            <h1>Moodverse</h1>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
+          <h1>Moodverse</h1>
+          <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+          <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         </div>
         <div class="profil-streak">
             <ul>

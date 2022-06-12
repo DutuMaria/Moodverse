@@ -91,7 +91,6 @@ namespace Moodverse
             {
                 opt.AddPolicy("admin", policy => policy.RequireRole("admin").RequireAuthenticatedUser().AddAuthenticationSchemes("AuthScheme").Build());
                 opt.AddPolicy("user", policy => policy.RequireRole("user").RequireAuthenticatedUser().AddAuthenticationSchemes("AuthScheme").Build());
-                opt.AddPolicy("loggedUser", policy => policy.RequireRole("loggedUser").RequireAuthenticatedUser().AddAuthenticationSchemes("AuthScheme").Build());
             });
 
             services.AddTransient<InitialSeed>();
