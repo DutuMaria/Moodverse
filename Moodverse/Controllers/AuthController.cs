@@ -40,7 +40,9 @@ namespace Moodverse.Controllers
         {
             var result = await _authManager.Login(model);
 
-            return Ok(result);
+            if (result)
+                return Ok("Logged in");
+            else return BadRequest("No user found");
         }
 
         [HttpPost("refresh")]
@@ -76,5 +78,119 @@ namespace Moodverse.Controllers
 
             return BadRequest("Not found!");
         }
+
+
+        [HttpGet("getUserIdBackground/{email}")]
+        public async Task<IActionResult> getUserIdBackground([FromRoute] string email)
+        {
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            foreach (var user in users)
+            {
+                var username = user.Email;
+
+                if (email == username)
+                {
+                    return Ok(user.IdBackground);
+                }
+            }
+
+            return BadRequest("Not found!");
+        }
+
+        [HttpGet("getUserIdAmbience/{email}")]
+        public async Task<IActionResult> getUserIdAmbience([FromRoute] string email)
+        {
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            foreach (var user in users)
+            {
+                var username = user.Email;
+
+                if (email == username)
+                {
+                    return Ok(user.IdAmbience);
+                }
+            }
+
+            return BadRequest("Not found!");
+        }
+
+        // [HttpGet("getUserIdTimer/{email}")]
+        // public async Task<IActionResult> getUserIdTimer([FromRoute] string email)
+        // {
+        //     var users = await _userManager.GetUsersInRoleAsync("user");
+
+        //     foreach (var user in users)
+        //     {
+        //         var username = user.Email;
+
+        //         if (email == username)
+        //         {
+        //             return Ok(user.IdTimer);
+        //         }
+        //     }
+
+        //     return BadRequest("Not found!");
+        // }
+
+
+        [HttpGet("getUserIdDailyQuote/{email}")]
+        public async Task<IActionResult> getUserIdDailyQuote([FromRoute] string email)
+        {
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            foreach (var user in users)
+            {
+                var username = user.Email;
+
+                if (email == username)
+                {
+                    return Ok(user.IdDailyQuote);
+                }
+            }
+
+            return BadRequest("Not found!");
+        }
+
+
+
+        [HttpGet("getUserIdToDoList/{email}")]
+        public async Task<IActionResult> getUserIdToDoList([FromRoute] string email)
+        {
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            foreach (var user in users)
+            {
+                var username = user.Email;
+
+                if (email == username)
+                {
+                    return Ok(user.IdToDoList);
+                }
+            }
+
+            return BadRequest("Not found!");
+        }
+
+        [HttpGet("getUserIdStreak/{email}")]
+        public async Task<IActionResult> getUserIdStreak([FromRoute] string email)
+        {
+            var users = await _userManager.GetUsersInRoleAsync("user");
+
+            foreach (var user in users)
+            {
+                var username = user.Email;
+
+                if (email == username)
+                {
+                    return Ok(user.IdStreak);
+                }
+            }
+
+            return BadRequest("Not found!");
+        }
+
+
     }
 }
