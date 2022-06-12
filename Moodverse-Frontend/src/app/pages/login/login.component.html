@@ -17,7 +17,7 @@
     <main>
         <div class="form_template_login">
             <h1 id="form_header">{{ text }}</h1>
-            <form [formGroup]= "loginForm" (ngSubmit)="doLogin()">
+            <form [formGroup]= "loginForm" id ="loginForm" (ngSubmit)="doLogin()">
                 <div class="login_form">
                     <div class="form-group">
                         <label class="form_rows">Email</label>
@@ -25,7 +25,7 @@
                         <input class="form-control" 
                         placeholder="Your username"
                         [ngClass]="loginForm.controls['email'].errors ? 'is-invalid' : ''"
-                        formControlName="email"  required />
+                        formControlName="email" required/>
                     </div>
 
                     <div class="form-group">
