@@ -10,6 +10,8 @@ using Moodverse.DAL.Entities;
 
 namespace Moodverse.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class DailyQuoteController : ControllerBase
     {
         // injectam contextul
@@ -33,7 +35,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            await _context.DailyQuote.AddAsync(dailyQuote);
+            await _context.DailyQuotes.AddAsync(dailyQuote);
 
             await _context.SaveChangesAsync();
 
@@ -44,7 +46,7 @@ namespace Moodverse.Controllers
         public async Task<IActionResult> GetDailyQuoteById([FromRoute] int id)
         {
             var dailyQuote = await _context
-                .DailyQuote
+                .DailyQuotes
                 .Where(x => x.Id == id)
                 .ToListAsync();
 
@@ -57,7 +59,7 @@ namespace Moodverse.Controllers
         {
             var author = "";
             var dailyQuotes = await _context
-                .DailyQuote
+                .DailyQuotes
                 .ToListAsync();
             foreach(var dq in dailyQuotes)
             {
@@ -75,7 +77,7 @@ namespace Moodverse.Controllers
         {
             var message = "";
             var dailyQuotes = await _context
-                .DailyQuote
+                .DailyQuotes
                 .ToListAsync();
             foreach(var dq in dailyQuotes)
             {
@@ -93,10 +95,13 @@ namespace Moodverse.Controllers
         // [Authorize("admin")]
         public async Task<IActionResult> GetDailyQuotes()
         {
+            Console.Write("Hello");
             var dailyQuotes = await _context
-                .DailyQuote
+                .DailyQuotes
                 .ToListAsync();
-            return Ok(dailyQuote);
+
+            Console.Write(dailyQuotes);
+            return Ok(dailyQuotes);
         }
 
 
@@ -104,7 +109,7 @@ namespace Moodverse.Controllers
         [Authorize("admin")]
         public async Task<IActionResult> UpdateDailyQuote([FromRoute] int id, [FromBody] DailyQuote dailyQuote)
         {
-            var _dailyQuote = await _context.DailyQuote.FirstOrDefaultAsync(x => x.Id == id);
+            var _dailyQuote = await _context.DailyQuotes.FirstOrDefaultAsync(x => x.Id == id);
             if (_dailyQuote != null)
             {
                 _dailyQuote.Id = dailyQuote.Id;
@@ -128,7 +133,7 @@ namespace Moodverse.Controllers
                 return BadRequest("Id is 0!");
             }
 
-            var dailyQuote = await _context.DailyQuote.FirstOrDefaultAsync(x => x.Id == id);
+            var dailyQuote = await _context.DailyQuotes.FirstOrDefaultAsync(x => x.Id == id);
 
             _context.Remove(dailyQuote);
             await _context.SaveChangesAsync();

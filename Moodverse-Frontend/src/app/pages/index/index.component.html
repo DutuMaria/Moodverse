@@ -13,8 +13,14 @@
     <div class="grid-container">
         <div class="titlu">
           <h1>Moodverse</h1>
-          <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-          <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <ul>
+            <div>
+                <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+            </div>
+            <div>
+                <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            </div>
+          </ul>
         </div>
         <div class="profil-streak" *ngIf = "!isEnabled">
             <ul>
@@ -30,7 +36,7 @@
                 </div>
                 <div id="logout">
                     <li class="profil-list" >
-                        <button type="button" class="btn btn-light"><i class="fa-solid fa-arrow-right-from-bracket"></i><br><span class="textbuton">Log Out</span></button>
+                        <button type="button" class="btn btn-light" (click)="doLogout()"><i class="fa-solid fa-right-from-bracket"></i><br><span class="textbuton">Log Out</span></button>
                     </li>
                 </div>
 
@@ -63,7 +69,7 @@
         </div>
 
         <div *ngIf="quotes"  class="float-div" id="float-quote" cdkDrag>
-            Daily quote text
+            <p>{{quoteOfTheDay}}</p>
         </div>
 
         <div *ngIf="todolists"  class="float-div" id="float-todolist" cdkDrag>
