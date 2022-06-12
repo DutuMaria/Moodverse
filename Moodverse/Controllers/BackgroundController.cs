@@ -132,7 +132,6 @@ namespace Moodverse.Controllers
             }
 
             var background = await _context.Backgrounds.FirstOrDefaultAsync(x => x.Id == id);
-
             _context.Remove(background);
             await _context.SaveChangesAsync();
 

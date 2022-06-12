@@ -95,12 +95,9 @@ namespace Moodverse.Controllers
         // [Authorize("admin")]
         public async Task<IActionResult> GetDailyQuotes()
         {
-            Console.Write("Hello");
             var dailyQuotes = await _context
                 .DailyQuotes
                 .ToListAsync();
-
-            Console.Write(dailyQuotes);
             return Ok(dailyQuotes);
         }
 
