@@ -18,8 +18,7 @@ namespace Moodverse.DAL
             string[] roleNames =
             {
                 "admin",
-                "user",
-                "loggedUser"
+                "user"
             };
 
             foreach (var name in roleNames)

@@ -6,8 +6,8 @@
 </head>
 <body>
     <h1>Moodverse</h1>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+    <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+    <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 
 </body>
 </html>
