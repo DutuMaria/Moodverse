@@ -14,14 +14,6 @@
     font-size: 30px;
   }*/
 
-.titlu {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    font-family: 'Julius Sans One';
-}
-
 .titlu > h1 {
     font-size: 30px;
 }
@@ -34,17 +26,13 @@
   }
 
 .meniu {
+    position: fixed;
+    top: 100px;
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 6;
   }
-
-  
-#quote, #todolist, #background, #ambience {
-    height: 100%;
-    width: 100%;
-}
 
 .textbuton {
   font-size: 12px;
@@ -56,14 +44,18 @@ ul {
 }
 
 ul >li {
-  width: 25%;
+  width: 100%;
 }
 
+/*
 .profil-list {
   display: inline-block;
-}
+  //position: fixed;
+  top: 0;
+  right: 0;
+}*/
 
-.example-box {
+.float-div {
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -71,9 +63,6 @@ ul >li {
   border: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   background: #fff;
   border-radius: 4px;
   position: relative;
@@ -84,18 +73,39 @@ ul >li {
               0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.example-box:active {
+.float-div:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
               0 8px 10px 1px rgba(0, 0, 0, 0.14),
               0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-.example-handle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: #ccc;
-  cursor: move;
-  width: 24px;
-  height: 24px;
+#quote, #todolist, #background, #ambience {
+  height: 100%;
+  width: 100%;
+}
+
+#streak {
+  position: fixed;
+  top: 20px;
+  right: 15%;
+}
+
+#profil {
+  position: fixed;
+  top: 20px;
+  right: 10%;
+}
+
+#logout {
+  position: fixed;
+  top: 20px;
+  right: 5%;
+}
+
+.titlu {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-family: 'Julius Sans One';
 }
