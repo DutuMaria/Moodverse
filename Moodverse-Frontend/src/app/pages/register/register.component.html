@@ -20,7 +20,7 @@
     <main>
         <div class="form_template_register">
             <h1 id="form_header">Sign Up</h1>
-            <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+            <form [formGroup]="registerForm" id ="registerForm" (ngSubmit)="doRegister()">
                 <div class="register_form">
                     <div class="form-group">
                         <label class="form_rows">E-mail</label>
@@ -70,7 +70,7 @@
                 <button 
                 id="register_button"
                 [disabled]="registerForm.invalid" 
-                type="submit" class="btn btn-dark">{{text}}</button>
+                type="submit" class="btn btn-dark">{{text}} </button>
 
             </form>
         </div>

@@ -12,9 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, private router:Router, private authenticationService:AuthenticationService) { }
   public text:string = '';
-
   public loginForm!:FormGroup;
-
   public logged:boolean = false;
   public notLogged:boolean = true;
 
