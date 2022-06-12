@@ -37,15 +37,14 @@ export class RegisterComponent implements OnInit {
   }
 
   doRegister(){
-    console.log(this.registerForm.valid);
     console.log(this.registerForm);
-
-    if(this.registerForm.valid){
-      this.authenticationService.register(this.registerForm.value)
-      .subscribe((response:any)=>{
-        console.log(response);
-        this.router.navigateByUrl('/login');
-      })
+    if (this.registerForm.valid) {
+      this.authenticationService
+        .register(this.registerForm.value)
+        .subscribe((response: any) => {
+          console.log(response);
+        });
     }
+    this.router.navigate(['/login']);
   }
 }
