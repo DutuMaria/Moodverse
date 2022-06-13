@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moodverse.DAL;
 using Moodverse.DAL.Entities;
+using Moodverse.DAL.Models;
 
 namespace Moodverse.Controllers
 {
@@ -27,15 +28,15 @@ namespace Moodverse.Controllers
         }
 
         [HttpPost("AddDailyQuote")]
-        [Authorize("admin")]
-        public async Task<IActionResult> AddDailyQuote([FromBody] DailyQuote dailyQuote)
-        {
-            if (dailyQuote.Id == 0)
+        //[Authorize("admin")]
+        public async Task<IActionResult> AddDailyQuote(DailyQuoteModel model) {
+            var quote = new DailyQuote
             {
-                return BadRequest("Id is 0!");
-            }
+                Author = model.Author,
+                Message = model.Message
+            };
 
-            await _context.DailyQuotes.AddAsync(dailyQuote);
+            await _context.DailyQuotes.AddAsync(quote);
 
             await _context.SaveChangesAsync();
 
@@ -122,7 +123,7 @@ namespace Moodverse.Controllers
 
 
         [HttpDelete("DeleteDailyQuote/{id}")]
-        [Authorize("admin")]
+        //[Authorize("admin")]
         public async Task<IActionResult> DeleteDailyQuote([FromRoute] int id)
         {
             if (id == 0)

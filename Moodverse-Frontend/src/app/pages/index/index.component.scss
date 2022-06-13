@@ -67,8 +67,8 @@ ul >li {
 }*/
 
 .float-div {
-  width: 200px;
-  height: 200px;
+  // width: 200px;
+  // height: 200px;
   padding: 10px;
   box-sizing: border-box;
   border: solid 1px #ccc;
@@ -104,11 +104,43 @@ ul >li {
 #profil {
   position: fixed;
   top: 20px;
-  right: 10%;
+  right: 120px;
 }
 
 #logout {
   position: fixed;
   top: 20px;
-  right: 5%;
+  right: 30px;
+}
+
+#float-quote{
+  background: rgba(255, 255, 255, 0.2);
+  width: 200px;
+}
+
+#login, #register{
+  position: fixed;
+}
+
+#login{
+  top: 15px;
+  right: 120px;
+  width: 6%;
+}
+
+#register{
+  width: 6%;
+  top: 15px;
+  right: 30px;
+}
+
+a, a:hover{
+  text-decoration: none;
+  color: black;
+}
+
+#adminButton{
+  position: fixed;
+  top: 50%;
+  right: 50%;
 }

@@ -17,4 +17,11 @@ export class AppPrivateService {
   };
 
   constructor(private http:HttpClient) { }
+
+  checkIfAdmin(email: string) {
+    return this.http.get(
+      this.baseUrl + 'api/Role/checkIfAdmin/' + email,
+      this.privateHttpHeaders
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppPrivateService } from 'src/app/services/app-private.service';
 import { QuoteService } from 'src/app/services/quote.service';
 
 @Component({
@@ -9,13 +10,15 @@ import { QuoteService } from 'src/app/services/quote.service';
 })
 export class IndexComponent implements OnInit {
   public isEnabled: boolean = true;
+  public admin: boolean = false;
   backgrounds: boolean = false;
   ambiences: boolean = false;
   quotes: boolean = false;
   todolists: boolean = false;
-  quoteOfTheDay!: string;
+  quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
+  author: string = "Walt Whitman";
   quoteExists!: false;
-  constructor(private quoteService:QuoteService, private router:Router) { }
+  constructor(private privateService:AppPrivateService, private quoteService:QuoteService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
@@ -45,20 +48,25 @@ export class IndexComponent implements OnInit {
       let lenQuotesList;
       let randomIndex;
       let message = '';
+      let currentAuthor = '';
 
       this.quoteService.getAllQuotes().subscribe((response:any) => {
         quotesList = response;
         lenQuotesList = quotesList.length;
         randomIndex = this.getRandomInt(lenQuotesList);
         message = quotesList[randomIndex].message;
+        currentAuthor = quotesList[randomIndex].author;
 
         sessionStorage.setItem("DailyQuote", message);
+        sessionStorage.setItem("AuthorDailyQuote", currentAuthor);
       })
 
-      if ("DailyQuote" in sessionStorage){
+      if ("DailyQuote" in sessionStorage && "AuthorDailyQuote" in sessionStorage){
         this.quoteOfTheDay = sessionStorage.getItem("DailyQuote")!;
+        this.author = sessionStorage.getItem("AuthorDailyQuote")!;
       }
       console.log(this.quoteOfTheDay);
+      console.log(this.author);
     }
   }
 
@@ -69,6 +77,7 @@ export class IndexComponent implements OnInit {
 
   doLogout(){
     sessionStorage.removeItem("currentUser");
+    sessionStorage.clear();
     this.isEnabled = true;
   }
 
