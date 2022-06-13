@@ -45,6 +45,7 @@ body {
 
 h1{
   font-family: 'Julius Sans One';
+  text-shadow: 2px 2px 2px white;
 }
 
 .meniu {
@@ -84,7 +85,7 @@ ul >li {
   box-sizing: border-box;
   border: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
-  display: flex;
+  // display: flex;
   background: #fff;
   border-radius: 4px;
   position: relative;
@@ -125,7 +126,7 @@ ul >li {
 }
 
 #float-quote{
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   width: 200px;
 }
 
@@ -257,6 +258,66 @@ a, a:hover{
   opacity: 1;
 }
 
+h3{
+  font-family: 'Julius Sans One';
+  font-size: 20px;
+}
+
+.task{
+  border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.inputTask{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  
+}
+
+.cos{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#cos{
+  position: absolute;
+  right: 20px;
+  font-size: 16px;
+  margin: -7px;
+  transition: color 0.1s ease-in-out;
+}
+
+#cos:hover{
+  color: $color-1;
+}
+
+// #bulina{
+//   font-size: 10px;
+// }
+
+.newTask{
+  border-radius: 1px solid grey;
+  width: 85%;
+}
+
+.butonCos{
+  border-style: none;
+  background-color: transparent;
+  width: 10%;
+  outline: none;
+}
+
+.progress{
+  font-size: 12px;
+  background-color: $color-5;
+  height: 30px;
+}
+
+.progress > p{
+  padding: 5px;
+}
+
 
 // MOOD
 
@@ -312,3 +373,4 @@ a, a:hover{
   position: relative;
   top: 10px;
 }
+

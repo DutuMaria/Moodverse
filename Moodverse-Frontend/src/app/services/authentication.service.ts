@@ -27,8 +27,8 @@ export class AuthenticationService {
   }
 
   register(data: any) {
-    console.log(this.baseUrl + 'api/Auth/register')
-    console.log(data)
+    // console.log(this.baseUrl + 'api/Auth/register')
+    // console.log(data)
     return this.http.post(
       this.baseUrl + 'api/Auth/register',
       data,

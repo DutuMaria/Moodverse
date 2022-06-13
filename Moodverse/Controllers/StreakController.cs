@@ -26,20 +26,29 @@ namespace Moodverse.Controllers
             _userManager = userManager;
         }
 
-        [HttpPost("AddStreak")]
-        public async Task<IActionResult> AddStreak([FromBody] Streak streak)
+        [HttpPost("AddStreak/{idUser}")]
+        public async Task<IActionResult> AddStreak([FromRoute] int idUser)
         {
-            if (streak.Id == 0)
-            {
-                return BadRequest("Id is 0!");
-            }
-
+            var streak = new Streak();
+            //streak.Id = idUser;
+            streak.UserId = idUser;
             streak.LastDate = DateTime.Today;
-            streak.NumberOfDays = 1;
+            streak.NumberOfDays = 0;
 
+            var users = await _userManager.GetUsersInRoleAsync("user");
             await _context.Streaks.AddAsync(streak);
-
             await _context.SaveChangesAsync();
+
+            foreach (var user in users)
+            {
+                var id = user.Id;
+                Console.Write("2-------------------------");
+
+                if (id == idUser)
+                {
+                    user.IdStreak = streak.Id;
+                }
+            }
 
             return NoContent();
         }

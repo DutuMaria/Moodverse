@@ -15,6 +15,7 @@ import { StreakService } from 'src/app/services/streak.service';
 export class IndexComponent implements OnInit {
   public isEnabled: boolean = true;
   public admin: boolean = false;
+  public newTask!: any;
   backgrounds: boolean = false;
   ambiences: boolean = false;
   quotes: boolean = false;
@@ -26,9 +27,13 @@ export class IndexComponent implements OnInit {
   author: string = "Walt Whitman";
   quoteExists!: false;
   streakNumber: number = 0;
+  public tasks : string[] = [];
   public users:any[]=[];
   public backgroundsList:any[]=[];
   public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
+  public checkedTasks:number[] = [];
+  public isDisabled:boolean[] = [];
+  public progress:number = 0;
   public ambiencesList:any[]=[];
   toggle1: boolean = false;
   toggle2: boolean = false;
@@ -41,6 +46,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.getUserStatus();
     this.getAllBackgrounds();
+    this.streakFunction();
     this.getAllAmbiences();
   }
 
@@ -53,7 +59,10 @@ export class IndexComponent implements OnInit {
   streakFunction(){ //apelat la login?
     this.streakService.getStreakNumber().subscribe((response:any) =>{
       //sessionStorage.setItem("Streak", response);
-      this.streakNumber = response;
+      this.streakService.updateStreak().subscribe((response:any) => {
+        console.log(response);
+        this.streakNumber = response;
+      })
     });
     //update streak apelat la login
     //create streak apelat la register
@@ -167,6 +176,43 @@ export class IndexComponent implements OnInit {
 
   }
 
+  addToList() {
+      if (this.newTask != '') {
+        this.tasks.push(this.newTask);
+        this.newTask = '';
+        this.isDisabled.push(false);
+      }
+  }
+
+  deleteTask(index:any){
+    this.tasks.splice(index, 1);
+    let indexChecked = this.checkedTasks.findIndex(x => x === index);
+
+    this.checkedTasks.splice(indexChecked, 1);
+    this.getProgress();
+  }
+
+  addCheckedTasks(event:any, index:any){
+    if (event.target.checked){
+      this.checkedTasks.push(index);
+      this.getProgress();
+      this.isDisabled[index] = true;
+    }
+  }
+
+  getProgress(){
+    let numberOfTasks = this.tasks.length;
+    let numberOfCheckedTasks = this.checkedTasks.length;
+
+    if (numberOfTasks == 0){
+      this.progress = 0;
+      this.isDisabled = [];
+    }
+    else {
+      this.progress = numberOfCheckedTasks / numberOfTasks * 100;
+    }
+  }
+
   getAllAmbiences(){
     this.ambienceService.getAllAmbiences().subscribe((response:any)=>{
       this.ambiencesList=response;
@@ -212,6 +258,4 @@ export class IndexComponent implements OnInit {
     this.toggle4 = false;
     this.culoare = false;
   }
-
-
 }
