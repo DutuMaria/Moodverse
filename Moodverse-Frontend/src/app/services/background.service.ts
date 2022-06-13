@@ -5,21 +5,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AppPrivateService {
-
-  private baseUrl:string=environment.baseUrl;
-
+export class BackgroundService {
+  private baseUrl:string = environment.baseUrl;
   private privateHttpHeaders = {
     headers: new HttpHeaders({
       'content-type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem("token"),
-    }),
+      Authorization: 'Bearer ' +  localStorage.getItem('token')
+    })
   };
-
   constructor(private http:HttpClient) { }
 
-  getAllUsers() {
-    return this.http.get(this.baseUrl + 'api/Auth/getAllUsers', this.privateHttpHeaders);
+  getAllBackgrounds(){
+    return this.http.get(this.baseUrl + 'api/Background/GetBackgrounds', this.privateHttpHeaders);
   }
-  
 }
