@@ -14,10 +14,10 @@
           <h1>Moodverse</h1>
           <ul>
             <div>
-                <li *ngIf = "isEnabled"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+                <button id="login" class="btn btn-light" *ngIf = "isEnabled"><li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li></button>
             </div>
             <div>
-                <li *ngIf = "isEnabled"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <button id="register" class="btn btn-light" *ngIf = "isEnabled"><li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li></button>
             </div>
           </ul>
         </div>
@@ -39,7 +39,6 @@
                         <button type="button" class="btn btn-light" (click)="doLogout()"><i class="fa-solid fa-right-from-bracket"></i><br><span class="textbuton">Log Out</span></button>
                     </li>
                 </div>
-
             </ul>
         </div>
 
@@ -117,11 +116,12 @@
         </div>
 
         <div *ngIf="quotes"  class="float-div" id="float-quote" cdkDrag>
-            <p>{{quoteOfTheDay}}</p>
+            <p><i>{{quoteOfTheDay}}</i> ~ <b>{{author}}</b></p>
         </div>
 
         <div *ngIf="todolists"  class="float-div" id="float-todolist" cdkDrag>
-            To do list text
+            <h3>To Do List</h3>
+            
         </div>
         
     </div>

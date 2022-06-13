@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     LoginComponent,
     RegisterComponent,
     IndexComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
