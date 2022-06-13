@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuoteService } from 'src/app/services/quote.service';
+import { StreakService } from 'src/app/services/streak.service';
 
 @Component({
   selector: 'app-index',
@@ -15,7 +16,8 @@ export class IndexComponent implements OnInit {
   todolists: boolean = false;
   quoteOfTheDay!: string;
   quoteExists!: false;
-  constructor(private quoteService:QuoteService, private router:Router) { }
+  streakNumber: number = 0;
+  constructor(private quoteService:QuoteService,private streakService:StreakService , private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
@@ -26,8 +28,17 @@ export class IndexComponent implements OnInit {
       this.isEnabled = false;
     }
   }
+
+  streakFunction(){ //apelat la login?
+    this.streakService.getStreakNumber().subscribe((response:any) =>{
+      //sessionStorage.setItem("Streak", response);
+      this.streakNumber = response;
+    });
+    //update streak apelat la login
+    //create streak apelat la register
+  }
     
-   backgroundsFunction(){
+  backgroundsFunction(){
     if(this.backgrounds == true) this.backgrounds = false;
     else this.backgrounds = true;
   }
