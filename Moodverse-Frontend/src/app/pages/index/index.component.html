@@ -112,8 +112,24 @@
         </div>
 
         <div *ngIf="ambiences"  class="float-div" id="float-ambience" cdkDrag>
-            Ambience sounds
+            <h3>Ambience sounds</h3>
+            <div>
+
+                <a *ngFor="let ambience of ambiencesList">
+                    <p>{{ambience.AmbienceName}}</p>
+                    <audio loop controls>
+                        <source src="/assets/{{ambience.sound}}" type="audio/wav">
+                    </audio>
+                </a>
+                
+            </div>
         </div>
+
+        <!-- Test audio -->
+
+        <!-- <audio loop controls>
+            <source src="/assets/mixkit-birds-chirping-near-the-river-2473.wav" type="audio/wav">
+        </audio> -->
 
         <div *ngIf="quotes"  class="float-div" id="float-quote" cdkDrag>
             <p><i>{{quoteOfTheDay}}</i> ~ <b>{{author}}</b></p>

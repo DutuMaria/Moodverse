@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConnectableObservable } from 'rxjs';
+import { AmbienceService } from 'src/app/services/ambience.service';
 import { AppPrivateService } from 'src/app/services/app-private.service';
 import { BackgroundService } from 'src/app/services/background.service';
 import { QuoteService } from 'src/app/services/quote.service';
@@ -24,12 +26,14 @@ export class IndexComponent implements OnInit {
   public users:any[]=[];
   public backgroundsList:any[]=[];
   public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
+  public ambiencesList:any[]=[];
 
-  constructor(private privateService:AppPrivateService,private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
+  constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
     this.getAllBackgrounds();
+    this.getAllAmbiences();
   }
 
   getUserStatus(){
@@ -136,4 +140,12 @@ export class IndexComponent implements OnInit {
     this.currentBackground="/assets/" + src;
 
   }
+
+  getAllAmbiences(){
+    this.ambienceService.getAllAmbiences().subscribe((response:any)=>{
+      this.ambiencesList=response;
+      console.log(this.ambiencesList[0]);
+    })
+  }
+
 }
