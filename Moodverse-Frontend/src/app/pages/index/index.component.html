@@ -56,6 +56,9 @@
                 <li>
                     <button type="button" class="btn btn-light" id="todolist" (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
                 </li>    
+                <li>
+                    <button type="button" class="btn btn-light" id="moodTracker" (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span class="textbuton">Mood Tracker</span></button>
+                </li>
             </ul>
         </div>
 
@@ -138,6 +141,36 @@
         <div *ngIf="todolists"  class="float-div" id="float-todolist" cdkDrag>
             <h3>To Do List</h3>
             
+        </div>
+
+        <div *ngIf="moodTracker"  class="float-div" id="float-tracker" cdkDrag>
+            
+                <ul>
+                    <li>
+                        <h3>Mood Tracker</h3>
+                    </li>
+                    <li  class="mood-center">
+                        <p>How do you feel?</p>
+                    </li>
+                    <li class="mood-center">
+                        <button type="button" class="btn btn-light" (click)="enableDisableRule1()" [disabled]="toggle1" [ngClass]="{'purple': culoare, 'red': !culoare}"><i class="fa-solid fa-face-angry fa-lg"></i><span> angry</span></button>
+                        <br>
+                    </li>
+                    <li class="mood-center">
+                        <button type="button" class="btn btn-light" (click)="enableDisableRule2()" [disabled]="toggle2" [ngClass]="{'blue': culoare, 'red': !culoare}"><i class="fa-solid fa-face-frown fa-lg"></i><span> sad</span></button>
+                       <br>
+                    </li>
+                    <li class="mood-center">
+                        <button type="button" class="btn btn-light" (click)="enableDisableRule3()" [disabled]="toggle3" [ngClass]="{'yellow': culoare, 'red': !culoare}"><i class="fa-solid fa-face-smile fa-lg"></i><span> good</span></button>
+                        <br>
+                    </li>
+                    <li class="mood-center">
+                        <button type="button" class="btn btn-light" (click)="enableDisableRule4()" [disabled]="toggle4" [ngClass]="{'green': culoare, 'red': !culoare}"><i class="fa-solid fa-face-laugh-beam fa-lg"></i><span> very happy</span></button>                        
+                    </li>
+                    <li class="mood-center">
+                        <button type="button" class="btn btn-light" (click)="reset()" >Reset</button>                        
+                    </li>
+                </ul>
         </div>
         
     </div>

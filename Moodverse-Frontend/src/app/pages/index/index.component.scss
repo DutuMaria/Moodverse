@@ -1,3 +1,9 @@
+$color-1: #CCB5F5;
+$color-2: #F5C9C4;
+$color-3: #A9D4F5;
+$color-4: #F5F090;
+$color-5: #9DF5C7;
+
 body {
   // background-image: url("/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg");
   background-size:cover
@@ -249,4 +255,41 @@ a, a:hover{
 .active,
 .demo:hover {
   opacity: 1;
+}
+
+
+// MOOD
+
+
+
+.purple {
+  background-color: $color-1;
+}
+
+.red {
+  background-color: $color-2;
+}
+
+.blue {
+  background-color: $color-3;
+}
+
+.yellow {
+  background-color: $color-4;
+}
+
+.green {
+  background-color: $color-5;
+}
+
+
+#float-tracker{
+  height: 300px;
+  width: 250px;
+}
+
+#float-tracker > ul > li > button{
+  width: 150px;
+  text-align: left;
+
 }

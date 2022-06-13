@@ -19,6 +19,7 @@ export class IndexComponent implements OnInit {
   ambiences: boolean = false;
   quotes: boolean = false;
   todolists: boolean = false;
+  moodTracker: boolean = false;
   quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
   author: string = "Walt Whitman";
   quoteExists!: false;
@@ -27,6 +28,11 @@ export class IndexComponent implements OnInit {
   public backgroundsList:any[]=[];
   public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
   public ambiencesList:any[]=[];
+  toggle1: boolean = false;
+  toggle2: boolean = false;
+  toggle3: boolean = false;
+  toggle4: boolean = false;
+  culoare: boolean = false;
 
   constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
@@ -95,6 +101,10 @@ export class IndexComponent implements OnInit {
     if(this.todolists == true) this.todolists = false;
     else this.todolists = true;
   }
+  moodTrackerFunction(){
+    if(this.moodTracker == true) this.moodTracker = false;
+    else this.moodTracker = true;
+  }
 
   doLogout(){
     sessionStorage.removeItem("currentUser");
@@ -147,5 +157,45 @@ export class IndexComponent implements OnInit {
       console.log(this.ambiencesList[0]);
     })
   }
+
+  enableDisableRule1(){
+    this.toggle4 = true;
+    this.toggle2 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+  enableDisableRule2(){
+    this.toggle1 = true;
+    this.toggle4 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+
+  enableDisableRule3(){
+    this.toggle1 = true;
+    this.toggle2 = true;
+    this.toggle4 = true;
+    this.culoare = true;
+
+  }
+
+  enableDisableRule4(){
+    this.toggle1 = true;
+    this.toggle2 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+
+  reset() {
+    this.toggle1 = false;
+    this.toggle2 = false;
+    this.toggle3 = false;
+    this.toggle4 = false;
+    this.culoare = false;
+  }
+
 
 }
