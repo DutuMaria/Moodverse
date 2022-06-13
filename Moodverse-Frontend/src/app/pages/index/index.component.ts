@@ -5,6 +5,7 @@ import { AmbienceService } from 'src/app/services/ambience.service';
 import { AppPrivateService } from 'src/app/services/app-private.service';
 import { BackgroundService } from 'src/app/services/background.service';
 import { QuoteService } from 'src/app/services/quote.service';
+import { StreakService } from 'src/app/services/streak.service';
 
 @Component({
   selector: 'app-index',
@@ -13,19 +14,21 @@ import { QuoteService } from 'src/app/services/quote.service';
 })
 export class IndexComponent implements OnInit {
   public isEnabled: boolean = true;
+  public admin: boolean = false;
   backgrounds: boolean = false;
   ambiences: boolean = false;
   quotes: boolean = false;
   todolists: boolean = false;
-  quoteOfTheDay!: string;
+  quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
+  author: string = "Walt Whitman";
   quoteExists!: false;
+  streakNumber: number = 0;
   public users:any[]=[];
   public backgroundsList:any[]=[];
   public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
   public ambiencesList:any[]=[];
 
-
-  constructor(private privateService:AppPrivateService, private ambienceService:AmbienceService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
+  constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
@@ -38,8 +41,17 @@ export class IndexComponent implements OnInit {
       this.isEnabled = false;
     }
   }
+
+  streakFunction(){ //apelat la login?
+    this.streakService.getStreakNumber().subscribe((response:any) =>{
+      //sessionStorage.setItem("Streak", response);
+      this.streakNumber = response;
+    });
+    //update streak apelat la login
+    //create streak apelat la register
+  }
     
-   backgroundsFunction(){
+  backgroundsFunction(){
     if(this.backgrounds == true) this.backgrounds = false;
     else this.backgrounds = true;
   }
@@ -57,20 +69,25 @@ export class IndexComponent implements OnInit {
       let lenQuotesList;
       let randomIndex;
       let message = '';
+      let currentAuthor = '';
 
       this.quoteService.getAllQuotes().subscribe((response:any) => {
         quotesList = response;
         lenQuotesList = quotesList.length;
         randomIndex = this.getRandomInt(lenQuotesList);
         message = quotesList[randomIndex].message;
+        currentAuthor = quotesList[randomIndex].author;
 
         sessionStorage.setItem("DailyQuote", message);
+        sessionStorage.setItem("AuthorDailyQuote", currentAuthor);
       })
 
-      if ("DailyQuote" in sessionStorage){
+      if ("DailyQuote" in sessionStorage && "AuthorDailyQuote" in sessionStorage){
         this.quoteOfTheDay = sessionStorage.getItem("DailyQuote")!;
+        this.author = sessionStorage.getItem("AuthorDailyQuote")!;
       }
       console.log(this.quoteOfTheDay);
+      console.log(this.author);
     }
   }
 
@@ -81,6 +98,7 @@ export class IndexComponent implements OnInit {
 
   doLogout(){
     sessionStorage.removeItem("currentUser");
+    sessionStorage.clear();
     this.isEnabled = true;
   }
 
