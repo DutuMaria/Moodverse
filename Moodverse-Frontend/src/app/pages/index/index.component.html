@@ -51,10 +51,10 @@
                     <button type="button" class="btn btn-light" id="ambience" (click)="ambiencesFunction()"><i class="fa-solid fa-headphones"></i><br><span class="textbuton">Ambience</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="quote" (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span class="textbuton">Daily Quote</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="quote" (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span class="textbuton">Daily Quote</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="todolist" (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="todolist" (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
                 </li>    
             </ul>
         </div>
@@ -120,8 +120,31 @@
         </div>
 
         <div *ngIf="todolists"  class="float-div" id="float-todolist" cdkDrag>
-            <h3>To Do List</h3>
-            
+            <h3><i class="fa-solid fa-pencil"></i> To Do List</h3>
+            <div class="input">
+                <div *ngFor="let task of tasks, let index = index;" class="task">
+                    <div class="inputTask">
+                        <input type="checkbox" [disabled]="isDisabled[index]" (change)="addCheckedTasks($event, index)"> {{task}}
+                    </div>
+                    <button class="butonCos" (click)="deleteTask(index)">
+                        <div class="cos">
+                            <i class="fa-solid fa-trash" id="cos"></i>
+                        </div>
+                    </button>
+                </div>
+
+                <br>
+                <input [(ngModel)]="newTask" type="text" 
+                    value="" class="newTask">
+                <button (click)="addToList()" 
+                    class="btn btn-light">
+                    Add
+                </button>
+
+                <div class="progress">
+                    <p><b>Your progress:</b> {{progress}}%</p>
+                </div>
+            </div>
         </div>
         
     </div>

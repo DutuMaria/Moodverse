@@ -17,14 +17,13 @@ export class StreakService {
 
   constructor(private http: HttpClient) { }
 
-  /*
   findId(){
     let email = sessionStorage.getItem("currentUser");
     return this.http.get(
       this.baseUrl + 'api/Auth/getUserId/' + email,
       this.privateHttpHeaders
     );
-  }*/
+  }
 
   findStreakId(){
     let email = sessionStorage.getItem("currentUser");
@@ -35,22 +34,37 @@ export class StreakService {
   }
 
   getStreakNumber(){
+    this.findStreakId().subscribe((response:any) => {
+      console.log("-------------");
+      console.log(response);
+      sessionStorage.setItem("StreakId", response);
+      console.log(sessionStorage.getItem("StreakId"));
+    })
+    console.log(sessionStorage.getItem("StreakId"));
     return this.http.get(
-      this.baseUrl + 'api/Streak/GetNumberOfDaysById/'+ this.findStreakId(),
+      this.baseUrl + 'api/Streak/GetNumberOfDaysById/'+ sessionStorage.getItem("StreakId"),
       this.privateHttpHeaders
     )
   }
 
   createStreak(){
+    this.findId().subscribe((response:any) => {
+      sessionStorage.setItem("idUser", response);
+    });
+    console.log(sessionStorage.getItem("idUser"))
     return this.http.post(
-      this.baseUrl + 'api/Streak/AddStreak',
+      this.baseUrl + 'api/Streak/AddStreak/' + sessionStorage.getItem("idUser"),
       this.privateHttpHeaders
     )
   }
 
   updateStreak(){
+    this.findStreakId().subscribe((response:any) => {
+      sessionStorage.setItem("StreakId", response);
+    })
+    console.log(sessionStorage.getItem("StreakId"));
     return this.http.put(
-      this.baseUrl + 'api/Streak/UpdateStreak/'+ this.findStreakId(),
+      this.baseUrl + 'api/Streak/UpdateStreak/'+ sessionStorage.getItem("StreakId"),
       this.privateHttpHeaders
     )
   }
