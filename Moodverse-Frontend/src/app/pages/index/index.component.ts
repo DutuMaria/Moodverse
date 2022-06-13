@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppPrivateService } from 'src/app/services/app-private.service';
+import { BackgroundService } from 'src/app/services/background.service';
 import { QuoteService } from 'src/app/services/quote.service';
 import { StreakService } from 'src/app/services/streak.service';
 
@@ -17,10 +19,15 @@ export class IndexComponent implements OnInit {
   quoteOfTheDay!: string;
   quoteExists!: false;
   streakNumber: number = 0;
-  constructor(private quoteService:QuoteService,private streakService:StreakService , private router:Router) { }
+  public users:any[]=[];
+  public backgroundsList:any[]=[];
+  public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
+
+  constructor(private privateService:AppPrivateService,private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
+    this.getAllBackgrounds();
   }
 
   getUserStatus(){
@@ -102,5 +109,23 @@ export class IndexComponent implements OnInit {
 
   getRandomInt(max:any) {
     return Math.floor(Math.random() * max);
+  }
+
+  getAllUsers(){
+    this.privateService.getAllUsers().subscribe((response:any)=>{
+      this.users=response.allUsers;
+    });
+  }
+
+  getAllBackgrounds(){
+    this.backgroundService.getAllBackgrounds().subscribe((response:any)=>{
+      this.backgroundsList=response;
+    });
+  }
+
+  changeBackground(src:string){
+    console.log(src);
+    this.currentBackground="/assets/" + src;
+
   }
 }
