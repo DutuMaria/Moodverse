@@ -20,6 +20,8 @@ export class IndexComponent implements OnInit {
   quotes: boolean = false;
   todolists: boolean = false;
   moodTracker: boolean = false;
+  ball: boolean = false;
+  ballmsj: string = "Prediction..."
   quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
   author: string = "Walt Whitman";
   quoteExists!: false;
@@ -65,6 +67,20 @@ export class IndexComponent implements OnInit {
   ambiencesFunction(){
     if(this.ambiences == true) this.ambiences = false;
     else this.ambiences = true;
+  }
+
+  ballFunction(){
+    if(this.ball == true) this.ball = false;
+    else {
+      this.ball = true;
+      this.ballmsj = "Prediction..."
+    }
+  }
+
+  ballAskFunction(){
+    let list = ["Yes", "No", "Most likely", "Certainly", "Definitely", "Better not tell", "Ask later", "Doubtful"]
+    let random = this.getRandomInt(8);
+    this.ballmsj = list[random]
   }
 
   quotesFunction(){

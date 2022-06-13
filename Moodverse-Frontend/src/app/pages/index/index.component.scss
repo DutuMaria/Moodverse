@@ -101,7 +101,7 @@ ul >li {
               0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-#quote, #todolist, #background, #ambience {
+#quote, #todolist, #background, #ambience , #ball{
   height: 100%;
   width: 100%;
 }
@@ -292,4 +292,23 @@ a, a:hover{
   width: 150px;
   text-align: left;
 
+}
+
+// 8 BALL
+
+#float-8ball{
+  height: 170px;
+  width: 300px;
+}
+
+#ball-ask{
+  position: relative;
+  //top: 20px;
+  height: 30px;
+  width: 100%;
+}
+
+.ball-msj {
+  position: relative;
+  top: 10px;
 }
