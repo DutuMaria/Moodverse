@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConnectableObservable } from 'rxjs';
+import { AmbienceService } from 'src/app/services/ambience.service';
 import { AppPrivateService } from 'src/app/services/app-private.service';
 import { BackgroundService } from 'src/app/services/background.service';
 import { QuoteService } from 'src/app/services/quote.service';
@@ -18,6 +20,9 @@ export class IndexComponent implements OnInit {
   ambiences: boolean = false;
   quotes: boolean = false;
   todolists: boolean = false;
+  moodTracker: boolean = false;
+  ball: boolean = false;
+  ballmsj: string = "Prediction..."
   quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
   author: string = "Walt Whitman";
   quoteExists!: false;
@@ -29,13 +34,20 @@ export class IndexComponent implements OnInit {
   public checkedTasks:number[] = [];
   public isDisabled:boolean[] = [];
   public progress:number = 0;
+  public ambiencesList:any[]=[];
+  toggle1: boolean = false;
+  toggle2: boolean = false;
+  toggle3: boolean = false;
+  toggle4: boolean = false;
+  culoare: boolean = false;
 
-  constructor(private privateService:AppPrivateService,private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
+  constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
     this.getAllBackgrounds();
     this.streakFunction();
+    this.getAllAmbiences();
   }
 
   getUserStatus(){
@@ -64,6 +76,20 @@ export class IndexComponent implements OnInit {
   ambiencesFunction(){
     if(this.ambiences == true) this.ambiences = false;
     else this.ambiences = true;
+  }
+
+  ballFunction(){
+    if(this.ball == true) this.ball = false;
+    else {
+      this.ball = true;
+      this.ballmsj = "Prediction..."
+    }
+  }
+
+  ballAskFunction(){
+    let list = ["Yes", "No", "Most likely", "Certainly", "Definitely", "Better not tell", "Ask later", "Doubtful"]
+    let random = this.getRandomInt(8);
+    this.ballmsj = list[random]
   }
 
   quotesFunction(){
@@ -99,6 +125,10 @@ export class IndexComponent implements OnInit {
   todolistsFunction(){
     if(this.todolists == true) this.todolists = false;
     else this.todolists = true;
+  }
+  moodTrackerFunction(){
+    if(this.moodTracker == true) this.moodTracker = false;
+    else this.moodTracker = true;
   }
 
   doLogout(){
@@ -181,5 +211,51 @@ export class IndexComponent implements OnInit {
     else {
       this.progress = numberOfCheckedTasks / numberOfTasks * 100;
     }
+  }
+
+  getAllAmbiences(){
+    this.ambienceService.getAllAmbiences().subscribe((response:any)=>{
+      this.ambiencesList=response;
+      console.log(this.ambiencesList[0]);
+    })
+  }
+
+  enableDisableRule1(){
+    this.toggle4 = true;
+    this.toggle2 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+  enableDisableRule2(){
+    this.toggle1 = true;
+    this.toggle4 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+
+  enableDisableRule3(){
+    this.toggle1 = true;
+    this.toggle2 = true;
+    this.toggle4 = true;
+    this.culoare = true;
+
+  }
+
+  enableDisableRule4(){
+    this.toggle1 = true;
+    this.toggle2 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+
+  reset() {
+    this.toggle1 = false;
+    this.toggle2 = false;
+    this.toggle3 = false;
+    this.toggle4 = false;
+    this.culoare = false;
   }
 }
