@@ -54,3 +54,15 @@ body{
 h1{
     font-family: 'Julius Sans One';
 }
+
+a, a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+#link-main {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 6%;
+}

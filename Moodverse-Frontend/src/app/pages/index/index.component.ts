@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppPrivateService } from 'src/app/services/app-private.service';
+import { BackgroundService } from 'src/app/services/background.service';
 import { QuoteService } from 'src/app/services/quote.service';
+import { StreakService } from 'src/app/services/streak.service';
 
 @Component({
   selector: 'app-index',
@@ -18,10 +20,16 @@ export class IndexComponent implements OnInit {
   quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
   author: string = "Walt Whitman";
   quoteExists!: false;
-  constructor(private privateService:AppPrivateService, private quoteService:QuoteService, private router:Router) { }
+  streakNumber: number = 0;
+  public users:any[]=[];
+  public backgroundsList:any[]=[];
+  public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
+
+  constructor(private privateService:AppPrivateService,private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
+    this.getAllBackgrounds();
   }
 
   getUserStatus(){
@@ -29,8 +37,17 @@ export class IndexComponent implements OnInit {
       this.isEnabled = false;
     }
   }
+
+  streakFunction(){ //apelat la login?
+    this.streakService.getStreakNumber().subscribe((response:any) =>{
+      //sessionStorage.setItem("Streak", response);
+      this.streakNumber = response;
+    });
+    //update streak apelat la login
+    //create streak apelat la register
+  }
     
-   backgroundsFunction(){
+  backgroundsFunction(){
     if(this.backgrounds == true) this.backgrounds = false;
     else this.backgrounds = true;
   }
@@ -100,5 +117,23 @@ export class IndexComponent implements OnInit {
 
   getRandomInt(max:any) {
     return Math.floor(Math.random() * max);
+  }
+
+  getAllUsers(){
+    this.privateService.getAllUsers().subscribe((response:any)=>{
+      this.users=response.allUsers;
+    });
+  }
+
+  getAllBackgrounds(){
+    this.backgroundService.getAllBackgrounds().subscribe((response:any)=>{
+      this.backgroundsList=response;
+    });
+  }
+
+  changeBackground(src:string){
+    console.log(src);
+    this.currentBackground="/assets/" + src;
+
   }
 }
