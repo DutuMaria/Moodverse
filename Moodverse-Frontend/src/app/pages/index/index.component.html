@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.component.scss" type="text/scss"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.component.scss" type="text/scss" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Moodverse</title>
 </head>
+
 <body background={{currentBackground}}>
     <div class="grid-container">
         <div class="titlu">
-          <h1>Moodverse</h1>
-          <ul>
-            <div>
-                <button id="login" class="btn btn-light" *ngIf = "isEnabled"><li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li></button>
-            </div>
-            <div>
-                <button id="register" class="btn btn-light" *ngIf = "isEnabled"><li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li></button>
-            </div>
-          </ul>
+            <h1>Moodverse</h1>
+            <ul>
+                <div>
+                    <button id="login" class="btn btn-light" *ngIf="isEnabled">
+                        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </button>
+                </div>
+                <div>
+                    <button id="register" class="btn btn-light" *ngIf="isEnabled">
+                        <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    </button>
+                </div>
+            </ul>
         </div>
-        <div class="profil-streak" *ngIf = "!isEnabled">
+        <div class="profil-streak" *ngIf="!isEnabled">
             <ul>
                 <div id="streak">
-                    <li class="profil-list" >
+                    <li class="profil-list">
                         <p>{{streakNumber}}</p>
                         <i class="fa-solid fa-fire-flame-curved"></i>
                     </li>
                 </div>
-                <!--
                 <div id="profil">
-                    <li class="profil-list" >
-                        <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span class="textbuton">Profile</span></button>
+                    <li class="profil-list">
+                        <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span
+                                class="textbuton">Profile</span></button>
                     </li>
-                </div>-->
+                </div>
                 <div id="logout">
-                    <li class="profil-list" >
-                        <button type="button" class="btn btn-light" (click)="doLogout()"><i class="fa-solid fa-right-from-bracket"></i><br><span class="textbuton">Log Out</span></button>
+                    <li class="profil-list">
+                        <button type="button" class="btn btn-light" (click)="doLogout()"><i
+                                class="fa-solid fa-right-from-bracket"></i><br><span class="textbuton">Log
+                                Out</span></button>
                     </li>
                 </div>
             </ul>
@@ -48,143 +59,157 @@
         <div class="meniu">
             <ul>
                 <li>
-                    <button type="button" class="btn btn-light" id="background" (click)="backgroundsFunction()"><i class="fa-solid fa-image"></i><br><span class="textbuton">Background</span></button>
+                    <button type="button" class="btn btn-light" id="background" (click)="backgroundsFunction()"><i
+                            class="fa-solid fa-image"></i><br><span class="textbuton">Background</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="ambience" (click)="ambiencesFunction()"><i class="fa-solid fa-headphones"></i><br><span class="textbuton">Ambience</span></button>
+                    <button type="button" class="btn btn-light" id="ambience" (click)="ambiencesFunction()"><i
+                            class="fa-solid fa-headphones"></i><br><span class="textbuton">Ambience</span></button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="ball" (click)="ballFunction()"><i class="fa-solid fa-comment-dots"></i><br><span class="textbuton">8 Ball</span></button>
+                    <button type="button" class="btn btn-light" id="ball" (click)="ballFunction()"><i
+                            class="fa-solid fa-comment-dots"></i><br><span class="textbuton">8 Ball</span></button>
                 </li>
                 <li>
-                   <button type="button" [disabled]="isEnabled" class="btn btn-light" id="quote" (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span class="textbuton">Daily Quote</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="quote"
+                        (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span
+                            class="textbuton">Daily Quote</span></button>
                 </li>
                 <li>
-                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="todolist" (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
-                </li>    
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="todolist"
+                        (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To
+                            Do List</span></button>
+                </li>
                 <li>
-                    <button type="button" class="btn btn-light" id="moodTracker" (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span class="textbuton">Mood Tracker</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="moodTracker"
+                        (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span
+                            class="textbuton">Mood Tracker</span></button>
                 </li>
             </ul>
         </div>
+    </div>
 
-        <div  *ngIf="backgrounds" class="float-div" id="float-background" cdkDrag>
-            <h3>Background images</h3>
-            <div class="carousel-container" >
-                <img *ngFor="let background of backgroundsList; let i=index"
-                src="/assets/{{background.image}}" [alt]="background.backgroundName"
-                [ngClass]="{'image-active': selectedIndex === i}"
-                (click)="changeBackground(background.image)"
-                >
+    <div *ngIf="backgrounds" class="float-div" id="float-background" cdkDrag>
+        <h3>Background images</h3>
+        <div class="carousel-container">
+            <img *ngFor="let background of backgroundsList; let i=index" src="/assets/{{background.image}}"
+                [alt]="background.backgroundName" [ngClass]="{'image-active': selectedIndex === i}"
+                (click)="changeBackground(background.image)">
 
-                <button *ngIf="controls" class="btn-carousel btn-prev">
-                    <i class="fas fa-arrow-circle-left icon-carousel icon-prev"
-                        (click)="onPrevClick()">
-                    </i>
-                </button>
-                <button *ngIf="controls" class="btn-carousel btn-next">
-                    <i class="fas fa-arrow-circle-right icon-carousel icon-next"
-                        (click)="onNextClick()">
-                    </i>
-                </button>
+            <button *ngIf="controls" class="btn-carousel btn-prev">
+                <i class="fas fa-arrow-circle-left icon-carousel icon-prev" (click)="onPrevClick()">
+                </i>
+            </button>
+            <button *ngIf="controls" class="btn-carousel btn-next">
+                <i class="fas fa-arrow-circle-right icon-carousel icon-next" (click)="onNextClick()">
+                </i>
+            </button>
 
+        </div>
+
+    </div>
+
+    <div *ngIf="ambiences" class="float-div" id="float-ambience" cdkDrag>
+        <h3>Ambience sounds</h3>
+        <div>
+            <a *ngFor="let ambience of ambiencesList">
+                <div><b>{{ambience['ambienceName']}}</b></div>
+                <audio loop controls>
+                    <source src="/assets/{{ambience.sound}}" type="audio/wav">
+                </audio>
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="quotes" class="float-div" id="float-quote" cdkDrag>
+        <p><i>{{quoteOfTheDay}}</i> ~ <b>{{author}}</b></p>
+    </div>
+
+    <div *ngIf="todolists" class="float-div" id="float-todolist" cdkDrag>
+        <h3><i class="fa-solid fa-pencil"></i> To Do List</h3>
+        <div class="input">
+            <input [(ngModel)]="newTask" type="text" value="" class="newTask">
+            <button (click)="addToList()" class="btn btn-light">
+                Add
+            </button>
+
+            <div class="progress">
+                <p><b>Your progress:</b> {{progress}}%</p>
             </div>
 
-        </div>
+            <br>
 
-        <div *ngIf="ambiences"  class="float-div" id="float-ambience" cdkDrag>
-            <h3>Ambience sounds</h3>
-            <div>
-                <a *ngFor="let ambience of ambiencesList">
-                    <div><b>{{ambience['ambienceName']}}</b></div>
-                    <audio loop controls>
-                        <source src="/assets/{{ambience.sound}}" type="audio/wav">
-                    </audio>
-                </a> 
-            </div>
-        </div>
-
-        <div *ngIf="quotes"  class="float-div" id="float-quote" cdkDrag>
-            <p><i>{{quoteOfTheDay}}</i> ~ <b>{{author}}</b></p>
-        </div>
-
-        <div *ngIf="todolists"  class="float-div" id="float-todolist" cdkDrag>
-            <h3><i class="fa-solid fa-pencil"></i> To Do List</h3>
-            <div class="input">
-                <div *ngFor="let task of tasks, let index = index;" class="task">
-                    <div class="inputTask">
-                        <input type="checkbox" [disabled]="isDisabled[index]" (change)="addCheckedTasks($event, index)"> {{task}}
-                    </div>
-                    <button class="butonCos" (click)="deleteTask(index)">
-                        <div class="cos">
-                            <i class="fa-solid fa-trash" id="cos"></i>
-                        </div>
-                    </button>
+            <div *ngFor="let task of tasks, let index = index;" class="task">
+                <div class="inputTask">
+                    <input id="checkbox" type="checkbox" [disabled]="isDisabled[index]"
+                        (change)="addCheckedTasks($event, index)"> {{task}}
                 </div>
+                <button class="butonCos" (click)="deleteTask(index)">
+                    <div class="cos">
+                        <i class="fa-solid fa-trash" id="cos"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <div *ngIf="moodTracker" class="float-div" id="float-tracker" cdkDrag>
+
+        <ul id="mood">
+            <li>
+                <h3>Mood Tracker</h3>
+            </li>
+            <li class="mood-center">
+                <p>How do you feel?</p>
+            </li>
+            <li class="mood-center">
+                <button type="button" class="btn btn-light" (click)="enableDisableRule1()" [disabled]="toggle1"
+                    [ngClass]="{'purple': culoare, 'red': !culoare}"><i class="fa-solid fa-face-angry fa-lg"></i><span>
+                        angry</span></button>
                 <br>
-                <input [(ngModel)]="newTask" type="text" 
-                    value="" class="newTask">
-                <button (click)="addToList()" 
-                    class="btn btn-light">
-                    Add
-                </button>
-
-                <div class="progress">
-                    <p><b>Your progress:</b> {{progress}}%</p>
+            </li>
+            <li class="mood-center">
+                <button type="button" class="btn btn-light" (click)="enableDisableRule2()" [disabled]="toggle2"
+                    [ngClass]="{'blue': culoare, 'red': !culoare}"><i class="fa-solid fa-face-frown fa-lg"></i><span>
+                        sad</span></button>
+                <br>
+            </li>
+            <li class="mood-center">
+                <button type="button" class="btn btn-light" (click)="enableDisableRule3()" [disabled]="toggle3"
+                    [ngClass]="{'yellow': culoare, 'red': !culoare}"><i class="fa-solid fa-face-smile fa-lg"></i><span>
+                        good</span></button>
+                <br>
+            </li>
+            <li class="mood-center">
+                <button type="button" class="btn btn-light" (click)="enableDisableRule4()" [disabled]="toggle4"
+                    [ngClass]="{'green': culoare, 'red': !culoare}"><i
+                        class="fa-solid fa-face-laugh-beam fa-lg"></i><span> very happy</span></button>
+            </li>
+            <li class="mood-center">
+                <button type="button" class="btn btn-light" (click)="reset()">Reset</button>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="ball" class="float-div" id="float-8ball" cdkDrag>
+        <ul id="ball8">
+            <li>
+                <h3><i class="fa-solid fa-bowling-ball"></i> Magic 8 ball</h3>
+            </li>
+            <li>
+                <input type="text" id="ball-question" placeholder="Your question...">
+            </li>
+            <li>
+                <button type="button" class="btn btn-light" id="ball-ask" (click)="ballAskFunction()"><span
+                        class="textbuton">Ask</span></button>
+            </li>
+            <li>
+                <div class="ball-msj">
+                    <p>{{ballmsj}}</p>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
 
-        <div *ngIf="moodTracker"  class="float-div" id="float-tracker" cdkDrag>
-            
-                <ul>
-                    <li>
-                        <h3>Mood Tracker</h3>
-                    </li>
-                    <li  class="mood-center">
-                        <p>How do you feel?</p>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule1()" [disabled]="toggle1" [ngClass]="{'purple': culoare, 'red': !culoare}"><i class="fa-solid fa-face-angry fa-lg"></i><span> angry</span></button>
-                        <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule2()" [disabled]="toggle2" [ngClass]="{'blue': culoare, 'red': !culoare}"><i class="fa-solid fa-face-frown fa-lg"></i><span> sad</span></button>
-                       <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule3()" [disabled]="toggle3" [ngClass]="{'yellow': culoare, 'red': !culoare}"><i class="fa-solid fa-face-smile fa-lg"></i><span> good</span></button>
-                        <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule4()" [disabled]="toggle4" [ngClass]="{'green': culoare, 'red': !culoare}"><i class="fa-solid fa-face-laugh-beam fa-lg"></i><span> very happy</span></button>                        
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="reset()" >Reset</button>                        
-                    </li>
-                </ul>
-
-        <div *ngIf="ball"  class="float-div" id="float-8ball" cdkDrag>
-            <ul>
-                <li>
-                    <h3><i class="fa-solid fa-bowling-ball"></i> Magic 8 ball</h3>
-                </li>
-                <li>
-                    <input type="text" id="ball-question" placeholder="Your question...">
-                </li>
-                <li>
-                    <button type="button" class="btn btn-light" id="ball-ask" (click)="ballAskFunction()"><span class="textbuton">Ask</span></button>
-                </li>
-                <li>
-                    <div class="ball-msj">
-                        <p>{{ballmsj}}</p>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-        
     </div>
 </body>
+
 </html>

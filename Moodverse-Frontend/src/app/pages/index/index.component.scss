@@ -94,7 +94,7 @@ ul >li {
               0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-#quote, #todolist, #background, #ambience , #ball{
+#quote, #todolist, #background, #ambience, #ball{
   height: 100%;
   width: 100%;
 }
@@ -153,6 +153,8 @@ a, a:hover{
 
 #float-background{
   background: rgba(255, 255, 255, 0.5);
+  height: 350px;
+  width: 400px;
 }
 
 .carousel-container {
@@ -227,6 +229,9 @@ h3{
 
 
 #float-ambience {
+  height: 350px;
+  width: 400px;
+  overflow: scroll;
   background: rgba(255, 255, 255, 0.5);
   padding-left: 20px;
 }
@@ -240,13 +245,23 @@ h3{
   border-bottom: 1px solid grey;
   display: grid;
   grid-template-columns: auto auto;
+  overflow: scroll;
 }
 
 .inputTask{
   grid-column-start: 1;
   grid-column-end: 2;
-  
+
 }
+
+.static{
+  position: absolute;
+  bottom: 0;
+}
+
+// .scroll{
+//   overflow: scroll;
+// }
 
 .cos{
   grid-column-start: 2;
@@ -270,6 +285,11 @@ h3{
   border-radius: 1px solid grey;
   width: 85%;
 }
+
+// .addNewTask{
+//   position: relative;
+//   bottom: 15px;
+// }
 
 .butonCos{
   border-style: none;
@@ -315,12 +335,19 @@ h3{
 #float-tracker{
   height: 300px;
   width: 250px;
+  background: rgba(255, 255, 255, 0.5);
+  position: relative;
+  bottom: 50px;
+  left: 500px;
 }
 
 #float-tracker > ul > li > button{
   width: 150px;
   text-align: left;
+}
 
+#mood{
+  padding:10px;
 }
 
 // 8 BALL
@@ -328,6 +355,7 @@ h3{
 #float-8ball{
   height: 170px;
   width: 300px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 #ball-ask{
@@ -340,5 +368,17 @@ h3{
 .ball-msj {
   position: relative;
   top: 10px;
+}
+
+#ball8{
+  padding:10px;
+}
+
+#float-todolist{
+  background: rgba(255, 255, 255, 0.5);
+  height: 300px;
+  width: 400px;
+  position: relative;
+  overflow: scroll;
 }
 
