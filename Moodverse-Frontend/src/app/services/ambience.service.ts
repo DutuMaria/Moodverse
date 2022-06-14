@@ -21,4 +21,19 @@ export class AmbienceService {
     return this.http.get(this.baseUrl + 'api/Ambience/GetAmbiences', this.privateHttpHeaders);
   }
 
+  addAmbience(data:any){
+    return this.http.post(
+      this.baseUrl + 'api/Ambience/AddAmbience',
+      data,
+      this.privateHttpHeaders
+    );
+  }
+
+  deleteAmbience(id: any){
+    return this.http.delete(
+      this.baseUrl + 'api/Ambience/DeleteAmbience/' + id,
+      this.privateHttpHeaders
+    )
+  }
+
 }

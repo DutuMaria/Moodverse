@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConnectableObservable } from 'rxjs';
+
 import { AmbienceService } from 'src/app/services/ambience.service';
 import { AppPrivateService } from 'src/app/services/app-private.service';
 import { BackgroundService } from 'src/app/services/background.service';
@@ -26,7 +26,7 @@ export class IndexComponent implements OnInit {
   public quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
   public author: string = "Walt Whitman";
   public quoteExists!: false;
-  public streakNumber: number = 0;
+  public streakNumber: number = 1;
   public tasks: string[] = [];
   public users: any[] = [];
   public checkedTasks: number[] = [];
@@ -48,7 +48,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.getUserStatus();
     this.getAllBackgrounds();
-    this.streakFunction();
+    // this.streakFunction();
     this.getAllAmbiences();
   }
 

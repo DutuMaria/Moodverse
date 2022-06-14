@@ -30,14 +30,22 @@
         <div class="ambience">
             <div class="add">
                 <div class="subtitle">
-                    <h3>Ambiences</h3>
+                    <h2>Ambiences</h2>
                 </div>
                 <form [formGroup]="addAmbienceForm" id="addForm" (ngSubmit)="addAmbience()">
                     <div class="add_form">
                         <div class="form-group">
                             <label class="form_rows">Sound</label>
                             <br>
-                            <input formControlName="sound" id="file" type="file" (change)="onFileChange($event)">
+
+                            <input 
+                            type="file"
+                            accept="audio/*"
+                            (change)="onUploadAmbience($event)"
+                            >
+
+                            <input formControlName="sound"  type="text" hidden>
+                            
                         </div>
 
                         <div class="form-group">
@@ -54,8 +62,15 @@
 
                 </form>
 
-                <div class="updateDelete">
-
+                <div class="delete">
+                    <div *ngFor="let ambience of ambiencesList" class="for">
+                        <div class="object">
+                            {{ambience['ambienceName']}}
+                        </div>
+                        <div class="deleteButton">
+                            <button class="btn btn-light" (click)="deleteAmbience(ambience['id'])">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -63,7 +78,7 @@
         <div class="background">
             <div class="add">
                 <div class="subtitle">
-                    <h3>Backgrounds</h3>
+                    <h2>Backgrounds</h2>
                 </div>
 
                 <form [formGroup]="addBackgroundForm" id="addForm" (ngSubmit)="addBackground()">
@@ -72,12 +87,13 @@
                             <label class="form_rows">Image</label>
                             <br>
 
-                            <input formControlName="image" id="file" type="file" (change)="onFileChange($event)">
+                            <input 
+                            type="file"
+                            accept="image/*"
+                            (change)="onUploadBackground($event)"
+                            >
 
-                            <!-- <input class="form-control" 
-                            [ngClass]="addBackgroundForm.controls['image'].errors ? 'is-invalid' : ''"
-                            formControlName="image" 
-                            required /> -->
+                            <input formControlName="image"  type="text" hidden>
                         </div>
 
                         <div class="form-group">
@@ -94,8 +110,17 @@
 
                 </form>
 
-                <div class="updateDelete">
+                <br>
 
+                <div class="delete">
+                    <div *ngFor="let background of backgroundsList" class="for">
+                        <div class="object">
+                            {{background['backgroundName']}}
+                        </div>
+                        <div class="deleteButton">
+                            <button class="btn btn-light" (click)="deleteBackground(background['id'])">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
