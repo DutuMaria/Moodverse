@@ -4,7 +4,7 @@ $color-3: #A9D4F5;
 $color-4: #F5F090;
 $color-5: #9DF5C7;
 
-body{
+body {
     background-image: linear-gradient(to bottom right, $color-1, $color-2);
     height: 100vh;
 }
@@ -13,7 +13,7 @@ body{
 //     background-image: linear-gradient(to bottom right, $color-1, $color-2);
 // }
 
-.form_template_register{
+.form_template_register {
     position: relative;
     top: 100px;
     margin: 10%;
@@ -24,12 +24,12 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#form_header{
+#form_header {
     text-align: center;
     padding-top: 5%;
 }
 
-#register_button{
+#register_button {
     padding-left: 40%;
     padding-right: 40%;
     margin-left: 4.5%;
@@ -39,29 +39,30 @@ body{
     color: black;
 }
 
-#page_header{
+#page_header {
     font-size: 80px;
 }
 
-.title_div{
+.title_div {
     position: relative;
     top: 105px;
     left: 25%;
     font-size: 22px;
 }
 
-.register_form{
+.register_form {
     padding-top: 5%;
     padding-bottom: 5%;
     padding-left: 20%;
     padding-right: 20%;
 }
 
-h1{
+h1 {
     font-family: 'Julius Sans One';
 }
 
-a, a:hover{
+a,
+a:hover {
     text-decoration: none;
     color: black;
 }

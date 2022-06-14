@@ -27,23 +27,23 @@ export class IndexComponent implements OnInit {
   public author: string = "Walt Whitman";
   public quoteExists!: false;
   public streakNumber: number = 0;
-  public tasks : string[] = [];
-  public users:any[]=[];
-  public checkedTasks:number[] = [];
-  public isDisabled:boolean[] = [];
-  public progress:number = 0;
-  public ambiencesList:any[]=[];
+  public tasks: string[] = [];
+  public users: any[] = [];
+  public checkedTasks: number[] = [];
+  public isDisabled: boolean[] = [];
+  public progress: number = 0;
+  public ambiencesList: any[] = [];
   public toggle1: boolean = false;
   public toggle2: boolean = false;
   public toggle3: boolean = false;
   public toggle4: boolean = false;
   public culoare: boolean = false;
-  public currentBackground:string= "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
-  public backgroundsList:any[]=[];
-  public selectedIndex: number=0;
-  @Input() controls=true;
+  public currentBackground: string = "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
+  public backgroundsList: any[] = [];
+  public selectedIndex: number = 0;
+  @Input() controls = true;
 
-  constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
+  constructor(private privateService: AppPrivateService, private ambienceService: AmbienceService, private streakService: StreakService, private quoteService: QuoteService, private backgroundService: BackgroundService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
@@ -52,16 +52,16 @@ export class IndexComponent implements OnInit {
     this.getAllAmbiences();
   }
 
-  getUserStatus(){
-    if("currentUser" in sessionStorage){
+  getUserStatus() {
+    if ("currentUser" in sessionStorage) {
       this.isEnabled = false;
     }
   }
 
-  streakFunction(){ //apelat la login?
-    this.streakService.getStreakNumber().subscribe((response:any) =>{
+  streakFunction() { //apelat la login?
+    this.streakService.getStreakNumber().subscribe((response: any) => {
       //sessionStorage.setItem("Streak", response);
-      this.streakService.updateStreak().subscribe((response:any) => {
+      this.streakService.updateStreak().subscribe((response: any) => {
         console.log(response);
         this.streakNumber = response;
       })
@@ -69,33 +69,33 @@ export class IndexComponent implements OnInit {
     //update streak apelat la login
     //create streak apelat la register
   }
-    
-  backgroundsFunction(){
-    if(this.backgrounds == true) this.backgrounds = false;
+
+  backgroundsFunction() {
+    if (this.backgrounds == true) this.backgrounds = false;
     else this.backgrounds = true;
   }
 
-  ambiencesFunction(){
-    if(this.ambiences == true) this.ambiences = false;
+  ambiencesFunction() {
+    if (this.ambiences == true) this.ambiences = false;
     else this.ambiences = true;
   }
 
-  ballFunction(){
-    if(this.ball == true) this.ball = false;
+  ballFunction() {
+    if (this.ball == true) this.ball = false;
     else {
       this.ball = true;
       this.ballmsj = "Prediction..."
     }
   }
 
-  ballAskFunction(){
+  ballAskFunction() {
     let list = ["Yes", "No", "Most likely", "Certainly", "Definitely", "Better not tell", "Ask later", "Doubtful"]
     let random = this.getRandomInt(8);
     this.ballmsj = list[random]
   }
 
-  quotesFunction(){
-    if(this.quotes == true) {this.quotes = false;}
+  quotesFunction() {
+    if (this.quotes == true) { this.quotes = false; }
     else {
       this.quotes = true;
       let quotesList = [];
@@ -104,7 +104,7 @@ export class IndexComponent implements OnInit {
       let message = '';
       let currentAuthor = '';
 
-      this.quoteService.getAllQuotes().subscribe((response:any) => {
+      this.quoteService.getAllQuotes().subscribe((response: any) => {
         quotesList = response;
         lenQuotesList = quotesList.length;
         randomIndex = this.getRandomInt(lenQuotesList);
@@ -115,7 +115,7 @@ export class IndexComponent implements OnInit {
         sessionStorage.setItem("AuthorDailyQuote", currentAuthor);
       })
 
-      if ("DailyQuote" in sessionStorage && "AuthorDailyQuote" in sessionStorage){
+      if ("DailyQuote" in sessionStorage && "AuthorDailyQuote" in sessionStorage) {
         this.quoteOfTheDay = sessionStorage.getItem("DailyQuote")!;
         this.author = sessionStorage.getItem("AuthorDailyQuote")!;
       }
@@ -124,69 +124,69 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  todolistsFunction(){
-    if(this.todolists == true) this.todolists = false;
+  todolistsFunction() {
+    if (this.todolists == true) this.todolists = false;
     else this.todolists = true;
   }
-  moodTrackerFunction(){
-    if(this.moodTracker == true) this.moodTracker = false;
+  moodTrackerFunction() {
+    if (this.moodTracker == true) this.moodTracker = false;
     else this.moodTracker = true;
   }
 
-  doLogout(){
+  doLogout() {
     sessionStorage.removeItem("currentUser");
     sessionStorage.clear();
     this.isEnabled = true;
   }
 
-  randomQuote(){
+  randomQuote() {
     let quote = ''
     let quotesList = [];
     let lenQuotesList;
     let randomIndex;
 
-    this.quoteService.getAllQuotes().subscribe((response:any) => {
+    this.quoteService.getAllQuotes().subscribe((response: any) => {
       quotesList = response;
       lenQuotesList = quotesList.lenght
       randomIndex = this.getRandomInt(lenQuotesList);
 
       this.quoteOfTheDay = quotesList[randomIndex];
     })
-    
+
     return quote;
   }
 
-  getRandomInt(max:any) {
+  getRandomInt(max: any) {
     return Math.floor(Math.random() * max);
   }
 
-  getAllUsers(){
-    this.privateService.getAllUsers().subscribe((response:any)=>{
-      this.users=response.allUsers;
+  getAllUsers() {
+    this.privateService.getAllUsers().subscribe((response: any) => {
+      this.users = response.allUsers;
     });
   }
 
-  getAllBackgrounds(){
-    this.backgroundService.getAllBackgrounds().subscribe((response:any)=>{
-      this.backgroundsList=response;
+  getAllBackgrounds() {
+    this.backgroundService.getAllBackgrounds().subscribe((response: any) => {
+      this.backgroundsList = response;
     });
   }
 
-  changeBackground(src:string){
+  changeBackground(src: string) {
     console.log(src);
-    this.currentBackground="/assets/" + src;
+    this.currentBackground = "/assets/" + src;
 
   }
 
   addToList() {
-      if (this.newTask != '') {
-        this.tasks.push(this.newTask);
-        this.newTask = '';
-        this.isDisabled.push(false);
-      }
+    if (this.newTask != '') {
+      this.tasks.push(this.newTask);
+      this.newTask = '';
+      this.isDisabled.push(false);
+    }
   }
 
-  deleteTask(index:any){
+  deleteTask(index: any) {
     this.tasks.splice(index, 1);
     let indexChecked = this.checkedTasks.findIndex(x => x === index);
 
@@ -194,19 +194,19 @@ export class IndexComponent implements OnInit {
     this.getProgress();
   }
 
-  addCheckedTasks(event:any, index:any){
-    if (event.target.checked){
+  addCheckedTasks(event: any, index: any) {
+    if (event.target.checked) {
       this.checkedTasks.push(index);
       this.getProgress();
       this.isDisabled[index] = true;
     }
   }
 
-  getProgress(){
+  getProgress() {
     let numberOfTasks = this.tasks.length;
     let numberOfCheckedTasks = this.checkedTasks.length;
 
-    if (numberOfTasks == 0){
+    if (numberOfTasks == 0) {
       this.progress = 0;
       this.isDisabled = [];
     }
@@ -215,23 +215,23 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  getAllAmbiences(){
-    this.ambienceService.getAllAmbiences().subscribe((response:any)=>{
-      this.ambiencesList=response;
+  getAllAmbiences() {
+    this.ambienceService.getAllAmbiences().subscribe((response: any) => {
+      this.ambiencesList = response;
       console.log(this.ambiencesList[0]);
     })
   }
 
-  onPrevClick(){
-    if (this.selectedIndex === 0){
+  onPrevClick() {
+    if (this.selectedIndex === 0) {
       this.selectedIndex = this.backgroundsList.length - 1;
     }
     else {
       this.selectedIndex--;
     }
   }
-  onNextClick(){
-    if (this.selectedIndex === this.backgroundsList.length - 1){
+  onNextClick() {
+    if (this.selectedIndex === this.backgroundsList.length - 1) {
       this.selectedIndex = 0;
     }
     else {
@@ -239,14 +239,14 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  enableDisableRule1(){
+  enableDisableRule1() {
     this.toggle4 = true;
     this.toggle2 = true;
     this.toggle3 = true;
     this.culoare = true;
 
   }
-  enableDisableRule2(){
+  enableDisableRule2() {
     this.toggle1 = true;
     this.toggle4 = true;
     this.toggle3 = true;
@@ -254,7 +254,7 @@ export class IndexComponent implements OnInit {
 
   }
 
-  enableDisableRule3(){
+  enableDisableRule3() {
     this.toggle1 = true;
     this.toggle2 = true;
     this.toggle4 = true;
@@ -262,7 +262,7 @@ export class IndexComponent implements OnInit {
 
   }
 
-  enableDisableRule4(){
+  enableDisableRule4() {
     this.toggle1 = true;
     this.toggle2 = true;
     this.toggle3 = true;

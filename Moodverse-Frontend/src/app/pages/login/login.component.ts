@@ -11,16 +11,16 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private privateService:AppPrivateService, private formBuilder:UntypedFormBuilder, private router:Router, private authenticationService:AuthenticationService) { }
-  public text:string = '';
-  public loginForm!:UntypedFormGroup;
-  public logged:boolean = false;
-  public notLogged:boolean = true;
-  public admin:boolean = false;
+  constructor(private privateService: AppPrivateService, private formBuilder: UntypedFormBuilder, private router: Router, private authenticationService: AuthenticationService) { }
+  public text: string = '';
+  public loginForm!: UntypedFormGroup;
+  public logged: boolean = false;
+  public notLogged: boolean = true;
+  public admin: boolean = false;
 
   ngOnInit(): void {
     this.text = "LOGIN";
-    
+
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -29,28 +29,28 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  getAdminStatus(){
+  getAdminStatus() {
     let currentUsername = sessionStorage.getItem("currentUser");
     this.privateService.checkIfAdmin(currentUsername!).subscribe(
-      (response : any) => {
+      (response: any) => {
         sessionStorage.setItem("checkIfAdmin", response);
 
         this.setAdminStatus();
         // console.log(sessionStorage.getItem("checkIfAdmin"));
 
-        if (sessionStorage.getItem("checkIfAdmin") == "true"){
+        if (sessionStorage.getItem("checkIfAdmin") == "true") {
           this.router.navigate(['/adminPage']);
           return;
         }
       })
   }
 
-  setSessionUser(){
+  setSessionUser() {
     sessionStorage.setItem("currentUser", this.loginForm.value.email);
   }
 
-  setAdminStatus(){
-    if (sessionStorage.getItem("checkIfAdmin") == "true"){
+  setAdminStatus() {
+    if (sessionStorage.getItem("checkIfAdmin") == "true") {
       this.admin = true;
     }
     else {
@@ -58,12 +58,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  doLogin(){
+  doLogin() {
     if (this.loginForm.valid) {
       this.authenticationService
         .login(this.loginForm.value)
         .subscribe((response: any) => {
-          if (response.success == false){
+          if (response.success == false) {
             alert("Username or password invalid");
             this.loginForm.reset();
           }
