@@ -287,7 +287,7 @@ export class IndexComponent implements OnInit {
     else this.timer = true;
   }
 
-  calculateTimerValue(){
+  calculateTimerValue(a: any, b: any){
     console.log("aaa");
     // console.log(this.defaultHour);
     // console.log(this.defaultMin);
@@ -309,7 +309,7 @@ export class IndexComponent implements OnInit {
       console.log(file.name);
     }
     console.log("bbb");
-    this.calculateTimerValue();
+    // this.calculateTimerValue();
   }
 
 }
