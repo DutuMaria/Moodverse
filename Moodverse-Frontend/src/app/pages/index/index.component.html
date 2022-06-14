@@ -31,12 +31,11 @@
                         <i class="fa-solid fa-fire-flame-curved"></i>
                     </li>
                 </div>
-                <!--
                 <div id="profil">
                     <li class="profil-list" >
                         <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span class="textbuton">Profile</span></button>
                     </li>
-                </div>-->
+                </div>
                 <div id="logout">
                     <li class="profil-list" >
                         <button type="button" class="btn btn-light" (click)="doLogout()"><i class="fa-solid fa-right-from-bracket"></i><br><span class="textbuton">Log Out</span></button>
@@ -63,7 +62,7 @@
                     <button type="button" [disabled]="isEnabled" class="btn btn-light" id="todolist" (click)="todolistsFunction()"><i class="fa-solid fa-list-ul"></i><br><span class="textbuton">To Do List</span></button>
                 </li>    
                 <li>
-                    <button type="button" class="btn btn-light" id="moodTracker" (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span class="textbuton">Mood Tracker</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="moodTracker" (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span class="textbuton">Mood Tracker</span></button>
                 </li>
             </ul>
         </div>
@@ -164,7 +163,7 @@
                         <button type="button" class="btn btn-light" (click)="reset()" >Reset</button>                        
                     </li>
                 </ul>
-
+        </div>
         <div *ngIf="ball"  class="float-div" id="float-8ball" cdkDrag>
             <ul>
                 <li>
