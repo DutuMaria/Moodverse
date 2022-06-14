@@ -10,13 +10,13 @@ describe('IndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndexComponent ],
+      declarations: [IndexComponent],
       imports: [
         HttpClientModule,
         RouterTestingModule,
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

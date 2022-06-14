@@ -17,9 +17,9 @@ describe('LoginComponent', () => {
         ReactiveFormsModule,
         HttpClientModule
       ],
-      declarations: [ LoginComponent ]
+      declarations: [LoginComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -66,36 +66,36 @@ describe('LoginComponent', () => {
   it('CHECK EMAIL VALUE AFTER ENTERING SOME VALUE AND VALIDATION', () => {
     const loginFormUserElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#loginForm').querySelectorAll('input')[0];
     loginFormUserElement.value = 'sample@gmail.com';
-    loginFormUserElement.dispatchEvent(new Event ('input')) ;
+    loginFormUserElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const emailValueFromGroup = component.loginForm.get('email');
-      expect (loginFormUserElement.value).toEqual(emailValueFromGroup?.value);
-      expect (emailValueFromGroup?.errors).toBeNull();
+      expect(loginFormUserElement.value).toEqual(emailValueFromGroup?.value);
+      expect(emailValueFromGroup?.errors).toBeNull();
     })
   });
 
   it('CHECK PASSWORD VALUE AFTER ENTERING SOME VALUE AND VALIDATION', () => {
     const loginFormUserElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#loginForm').querySelectorAll('input')[1];
     loginFormUserElement.value = 'Sample@123';
-    loginFormUserElement.dispatchEvent(new Event ('input')) ;
+    loginFormUserElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const passwordValueFromGroup = component.loginForm.get('password');
-      expect (loginFormUserElement.value).toEqual(passwordValueFromGroup?.value);
-      expect (passwordValueFromGroup?.errors).toBeNull();
+      expect(loginFormUserElement.value).toEqual(passwordValueFromGroup?.value);
+      expect(passwordValueFromGroup?.errors).toBeNull();
     })
   });
 
   it('CHECK LOGIN FORM IS VALID WHEN VALIDATIONS ARE FULFILLED', () => {
     const loginFormUserElement: HTMLInputElement = fixture.debugElement.nativeElement.
-    querySelector('#loginForm').querySelectorAll('input')[0];
+      querySelector('#loginForm').querySelectorAll('input')[0];
     const loginFormPasswordElement: HTMLInputElement = fixture.debugElement.nativeElement.
-    querySelector('#loginForm').querySelectorAll('input')[1];
+      querySelector('#loginForm').querySelectorAll('input')[1];
     loginFormUserElement.value = 'clara@gmail.com';
     loginFormPasswordElement.value = 'Clara@123';
-    loginFormUserElement.dispatchEvent(new Event ('input'));
-    loginFormPasswordElement.dispatchEvent(new Event ('input'));
+    loginFormUserElement.dispatchEvent(new Event('input'));
+    loginFormPasswordElement.dispatchEvent(new Event('input'));
     const isLoginFormValid = component.loginForm.valid;
     fixture.whenStable().then(() => {
       expect(isLoginFormValid).toBeTruthy;
@@ -104,10 +104,10 @@ describe('LoginComponent', () => {
 
   it('CHECK BUTTON function doLogin', () => {
     spyOn(component, 'doLogin');
-  
+
     let button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
-  
+
     fixture.whenStable().then(() => {
       expect(component.doLogin).toHaveBeenCalled();
     });

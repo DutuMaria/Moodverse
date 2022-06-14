@@ -4,16 +4,16 @@ $color-3: #A9D4F5;
 $color-4: #F5F090;
 $color-5: #9DF5C7;
 
-body{
+body {
     background-image: linear-gradient(to bottom right, $color-1, $color-2);
     height: 100vh;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
-.titlu{
+.titlu {
     position: relative;
     top: 10px;
     // left: 10px;
@@ -21,11 +21,11 @@ ul{
     font-size: 22px;
 }
 
-h1{
+h1 {
     font-family: 'Julius Sans One';
 }
 
-#logout{
+#logout {
     position: fixed;
     top: 10px;
     right: 50px;
@@ -39,7 +39,7 @@ h1{
     padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
-  }
+}
 
 .ambience {
     overflow: scroll;
@@ -51,7 +51,7 @@ h1{
     height: 80vh;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  }
+}
 
 .background {
     overflow: scroll;
@@ -63,7 +63,7 @@ h1{
     background-color: white;
     height: 80vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  }
+}
 
 .dailyQuote {
     overflow: scroll;
@@ -75,30 +75,30 @@ h1{
     background-color: white;
     height: 80vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-  }
+}
 
-.subtitle{
+.subtitle {
     margin-left: 10px;
     margin-top: 5px;
 }
 
-h2{
+h2 {
     font-family: 'Julius Sans One';
 }
 
-p{
+p {
     margin-left: 10px;
 }
 
-.add_form{
+.add_form {
     margin: 15px;
 }
 
-#add_button{
+#add_button {
     margin-left: 15px;
 }
 
-.for{
+.for {
     display: grid;
     grid-template-columns: auto auto;
     gap: 15px;
@@ -107,14 +107,14 @@ p{
     margin-right: 20px;
 }
 
-.object{
+.object {
     grid-column-start: 1;
     grid-column-end: 2;
     // overflow-x: hidden;
     // overflow-y: auto;
 }
 
-.deleteButton{
+.deleteButton {
     grid-column-start: 2;
     grid-column-end: 3;
     // overflow-x: hidden;

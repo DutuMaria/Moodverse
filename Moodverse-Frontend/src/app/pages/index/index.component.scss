@@ -6,48 +6,48 @@ $color-5: #9DF5C7;
 
 body {
   // background-image: url("/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg");
-  background-size:cover
+  background-size: cover
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto auto auto;
-    gap: 10px;
-    padding: 10px;
-  }
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
+  gap: 10px;
+  padding: 10px;
+}
 
-.titlu > h1 {
-    font-size: 30px;
+.titlu>h1 {
+  font-size: 30px;
 }
 
 .profil-streak {
-    grid-column-start: 7;
-    grid-column-end: 8;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
 
 .titlu {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
-  }
+}
 
-h1{
+h1 {
   font-family: 'Julius Sans One';
   text-shadow: 2px 2px 2px white;
 }
 
 .meniu {
-    position: fixed;
-    top: 100px;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 6;
-  }
+  position: fixed;
+  top: 100px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 6;
+}
 
 .textbuton {
   font-size: 12px;
@@ -58,7 +58,7 @@ ul {
   text-align: center;
 }
 
-ul >li {
+ul>li {
   width: 100%;
 }
 
@@ -84,17 +84,21 @@ ul >li {
   z-index: 1;
   transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-              0 2px 2px 0 rgba(0, 0, 0, 0.14),
-              0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .float-div:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-#quote, #todolist, #background, #ambience, #ball{
+#quote,
+#todolist,
+#background,
+#ambience,
+#ball {
   height: 100%;
   width: 100%;
 }
@@ -117,33 +121,35 @@ ul >li {
   right: 30px;
 }
 
-#float-quote{
+#float-quote {
   background: rgba(255, 255, 255, 0.5);
   width: 200px;
 }
 
-#login, #register{
+#login,
+#register {
   position: fixed;
 }
 
-#login{
+#login {
   top: 15px;
   right: 120px;
   width: 6%;
 }
 
-#register{
+#register {
   width: 6%;
   top: 15px;
   right: 30px;
 }
 
-a, a:hover{
+a,
+a:hover {
   text-decoration: none;
   color: black;
 }
 
-#adminButton{
+#adminButton {
   position: fixed;
   top: 50%;
   right: 50%;
@@ -151,7 +157,7 @@ a, a:hover{
 
 // BACKGROUND 
 
-#float-background{
+#float-background {
   background: rgba(255, 255, 255, 0.5);
   height: 350px;
   width: 400px;
@@ -165,17 +171,19 @@ a, a:hover{
   border-radius: 15px;
   // box-shadow: 0px 12px white;
 }
-.carousel-container img{
+
+.carousel-container img {
   display: none;
   border-radius: 10px;
 }
-.carousel-container img.image-active{
+
+.carousel-container img.image-active {
   display: block;
   width: 100%;
   // height: 400px;
 }
 
-.btn-carousel{
+.btn-carousel {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -192,36 +200,38 @@ a, a:hover{
   outline: none;
 }
 
-.btn-prev{
-  left:0;
+.btn-prev {
+  left: 0;
 }
 
-.btn-next{
-  right:0;
+.btn-next {
+  right: 0;
 }
 
-.icon-carousel{
+.icon-carousel {
   color: #fff;
   opacity: 0.5;
   transition: all 0.15s ease;
 }
-.icon-carousel:hover{
+
+.icon-carousel:hover {
   // color: white;
   opacity: 0.9;
 }
 
-.icon-carousel:active{
+.icon-carousel:active {
   opacity: 0.5;
 }
 
-.icon-next, .icon-prev{
+.icon-next,
+.icon-prev {
   font-size: 35px;
 }
 
 
 // AMBIENCE 
 
-h3{
+h3 {
   font-family: 'Julius Sans One';
   font-size: 20px;
   text-align: center;
@@ -236,39 +246,29 @@ h3{
   padding-left: 20px;
 }
 
-h3{
+h3 {
   font-family: 'Julius Sans One';
   font-size: 20px;
 }
 
-.task{
+.task {
   border-bottom: 1px solid grey;
   display: grid;
   grid-template-columns: auto auto;
   overflow: scroll;
 }
 
-.inputTask{
+.inputTask {
   grid-column-start: 1;
   grid-column-end: 2;
-
 }
 
-.static{
-  position: absolute;
-  bottom: 0;
-}
-
-// .scroll{
-//   overflow: scroll;
-// }
-
-.cos{
+.cos {
   grid-column-start: 2;
   grid-column-end: 3;
 }
 
-#cos{
+#cos {
   position: absolute;
   right: 20px;
   font-size: 16px;
@@ -276,35 +276,30 @@ h3{
   transition: color 0.1s ease-in-out;
 }
 
-#cos:hover{
+#cos:hover {
   color: $color-1;
 }
 
 
-.newTask{
+.newTask {
   border-radius: 1px solid grey;
   width: 85%;
 }
 
-// .addNewTask{
-//   position: relative;
-//   bottom: 15px;
-// }
-
-.butonCos{
+.butonCos {
   border-style: none;
   background-color: transparent;
   width: 10%;
   outline: none;
 }
 
-.progress{
+.progress {
   font-size: 12px;
   background-color: $color-5;
   height: 30px;
 }
 
-.progress > p{
+.progress>p {
   padding: 5px;
 }
 
@@ -332,7 +327,7 @@ h3{
 }
 
 
-#float-tracker{
+#float-tracker {
   height: 300px;
   width: 250px;
   background: rgba(255, 255, 255, 0.5);
@@ -341,7 +336,7 @@ h3{
   left: 500px;
 }
 
-#float-tracker > ul > li > button{
+#float-tracker>ul>li>button {
   width: 150px;
   text-align: left;
 }
@@ -352,13 +347,13 @@ h3{
 
 // 8 BALL
 
-#float-8ball{
+#float-8ball {
   height: 170px;
   width: 300px;
   background: rgba(255, 255, 255, 0.5);
 }
 
-#ball-ask{
+#ball-ask {
   position: relative;
   //top: 20px;
   height: 30px;
@@ -381,4 +376,3 @@ h3{
   position: relative;
   overflow: scroll;
 }
-

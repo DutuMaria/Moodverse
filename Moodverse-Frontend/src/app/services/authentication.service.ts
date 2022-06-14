@@ -16,7 +16,7 @@ export class AuthenticationService {
     }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(data: any) {
     return this.http.post(

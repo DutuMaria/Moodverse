@@ -4,12 +4,12 @@ $color-3: #A9D4F5;
 $color-4: #F5F090;
 $color-5: #9DF5C7;
 
-body{
+body {
     background-image: linear-gradient(to bottom right, $color-1, $color-2);
     height: 100vh;
 }
 
-.form_template_login{
+.form_template_login {
     // margin: 10%;
     margin-left: 25%;
     margin-right: 25%;
@@ -18,19 +18,19 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.login_form{
+.login_form {
     // padding-top: 5px;
     padding-left: 20%;
     padding-right: 20%;
     margin-top: 0px;
 }
 
-#form_header{
+#form_header {
     text-align: center;
     padding-top: 5%;
 }
 
-#login_button{
+#login_button {
     padding-left: 45%;
     padding-right: 40%;
     margin-left: 4.5%;
@@ -40,22 +40,23 @@ body{
     color: black;
 }
 
-#page_header{
+#page_header {
     font-size: 80px;
 }
 
-.title_div{
+.title_div {
     position: relative;
     top: 90px;
     left: 25%;
     font-size: 22px;
 }
 
-h1{
+h1 {
     font-family: 'Julius Sans One';
 }
 
-a, a:hover{
+a,
+a:hover {
     text-decoration: none;
     color: black;
 }
