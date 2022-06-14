@@ -15,26 +15,40 @@ import { StreakService } from 'src/app/services/streak.service';
 export class IndexComponent implements OnInit {
   public isEnabled: boolean = true;
   public admin: boolean = false;
-  backgrounds: boolean = false;
-  ambiences: boolean = false;
-  quotes: boolean = false;
-  todolists: boolean = false;
-  quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
-  author: string = "Walt Whitman";
-  quoteExists!: false;
-  streakNumber: number = 0;
+  public newTask!: any;
+  public backgrounds: boolean = false;
+  public ambiences: boolean = false;
+  public quotes: boolean = false;
+  public todolists: boolean = false;
+  public moodTracker: boolean = false;
+  public ball: boolean = false;
+  public ballmsj: string = "Prediction..."
+  public quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
+  public author: string = "Walt Whitman";
+  public quoteExists!: false;
+  public streakNumber: number = 0;
+  public tasks : string[] = [];
   public users:any[]=[];
-  public backgroundsList:any[]=[];
-  @Input() controls=true;
-  public selectedIndex: number=0;
-  public currentBackground:string= "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
+  public checkedTasks:number[] = [];
+  public isDisabled:boolean[] = [];
+  public progress:number = 0;
   public ambiencesList:any[]=[];
+  public toggle1: boolean = false;
+  public toggle2: boolean = false;
+  public toggle3: boolean = false;
+  public toggle4: boolean = false;
+  public culoare: boolean = false;
+  public currentBackground:string= "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
+  public backgroundsList:any[]=[];
+  public selectedIndex: number=0;
+  @Input() controls=true;
 
   constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
   ngOnInit(): void {
     this.getUserStatus();
     this.getAllBackgrounds();
+    this.streakFunction();
     this.getAllAmbiences();
   }
 
@@ -47,7 +61,10 @@ export class IndexComponent implements OnInit {
   streakFunction(){ //apelat la login?
     this.streakService.getStreakNumber().subscribe((response:any) =>{
       //sessionStorage.setItem("Streak", response);
-      this.streakNumber = response;
+      this.streakService.updateStreak().subscribe((response:any) => {
+        console.log(response);
+        this.streakNumber = response;
+      })
     });
     //update streak apelat la login
     //create streak apelat la register
@@ -61,6 +78,20 @@ export class IndexComponent implements OnInit {
   ambiencesFunction(){
     if(this.ambiences == true) this.ambiences = false;
     else this.ambiences = true;
+  }
+
+  ballFunction(){
+    if(this.ball == true) this.ball = false;
+    else {
+      this.ball = true;
+      this.ballmsj = "Prediction..."
+    }
+  }
+
+  ballAskFunction(){
+    let list = ["Yes", "No", "Most likely", "Certainly", "Definitely", "Better not tell", "Ask later", "Doubtful"]
+    let random = this.getRandomInt(8);
+    this.ballmsj = list[random]
   }
 
   quotesFunction(){
@@ -96,6 +127,10 @@ export class IndexComponent implements OnInit {
   todolistsFunction(){
     if(this.todolists == true) this.todolists = false;
     else this.todolists = true;
+  }
+  moodTrackerFunction(){
+    if(this.moodTracker == true) this.moodTracker = false;
+    else this.moodTracker = true;
   }
 
   doLogout(){
@@ -143,6 +178,43 @@ export class IndexComponent implements OnInit {
 
   }
 
+  addToList() {
+      if (this.newTask != '') {
+        this.tasks.push(this.newTask);
+        this.newTask = '';
+        this.isDisabled.push(false);
+      }
+  }
+
+  deleteTask(index:any){
+    this.tasks.splice(index, 1);
+    let indexChecked = this.checkedTasks.findIndex(x => x === index);
+
+    this.checkedTasks.splice(indexChecked, 1);
+    this.getProgress();
+  }
+
+  addCheckedTasks(event:any, index:any){
+    if (event.target.checked){
+      this.checkedTasks.push(index);
+      this.getProgress();
+      this.isDisabled[index] = true;
+    }
+  }
+
+  getProgress(){
+    let numberOfTasks = this.tasks.length;
+    let numberOfCheckedTasks = this.checkedTasks.length;
+
+    if (numberOfTasks == 0){
+      this.progress = 0;
+      this.isDisabled = [];
+    }
+    else {
+      this.progress = numberOfCheckedTasks / numberOfTasks * 100;
+    }
+  }
+
   getAllAmbiences(){
     this.ambienceService.getAllAmbiences().subscribe((response:any)=>{
       this.ambiencesList=response;
@@ -167,5 +239,43 @@ export class IndexComponent implements OnInit {
     }
   }
 
+  enableDisableRule1(){
+    this.toggle4 = true;
+    this.toggle2 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+  enableDisableRule2(){
+    this.toggle1 = true;
+    this.toggle4 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+
+  enableDisableRule3(){
+    this.toggle1 = true;
+    this.toggle2 = true;
+    this.toggle4 = true;
+    this.culoare = true;
+
+  }
+
+  enableDisableRule4(){
+    this.toggle1 = true;
+    this.toggle2 = true;
+    this.toggle3 = true;
+    this.culoare = true;
+
+  }
+
+  reset() {
+    this.toggle1 = false;
+    this.toggle2 = false;
+    this.toggle3 = false;
+    this.toggle4 = false;
+    this.culoare = false;
+  }
 
 }

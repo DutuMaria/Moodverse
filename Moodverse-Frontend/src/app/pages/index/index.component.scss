@@ -1,3 +1,9 @@
+$color-1: #CCB5F5;
+$color-2: #F5C9C4;
+$color-3: #A9D4F5;
+$color-4: #F5F090;
+$color-5: #9DF5C7;
+
 body {
   // background-image: url("/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg");
   background-size:cover
@@ -10,14 +16,6 @@ body {
     gap: 10px;
     padding: 10px;
   }
-
-  /*
- .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-  }*/
 
 .titlu > h1 {
     font-size: 30px;
@@ -39,6 +37,7 @@ body {
 
 h1{
   font-family: 'Julius Sans One';
+  text-shadow: 2px 2px 2px white;
 }
 
 .meniu {
@@ -95,7 +94,7 @@ ul >li {
               0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-#quote, #todolist, #background, #ambience {
+#quote, #todolist, #background, #ambience , #ball{
   height: 100%;
   width: 100%;
 }
@@ -119,7 +118,7 @@ ul >li {
 }
 
 #float-quote{
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   width: 200px;
 }
 
@@ -226,7 +225,120 @@ h3{
   text-align: center;
 }
 
+
 #float-ambience {
   background: rgba(255, 255, 255, 0.5);
   padding-left: 20px;
 }
+
+h3{
+  font-family: 'Julius Sans One';
+  font-size: 20px;
+}
+
+.task{
+  border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.inputTask{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  
+}
+
+.cos{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#cos{
+  position: absolute;
+  right: 20px;
+  font-size: 16px;
+  margin: -7px;
+  transition: color 0.1s ease-in-out;
+}
+
+#cos:hover{
+  color: $color-1;
+}
+
+
+.newTask{
+  border-radius: 1px solid grey;
+  width: 85%;
+}
+
+.butonCos{
+  border-style: none;
+  background-color: transparent;
+  width: 10%;
+  outline: none;
+}
+
+.progress{
+  font-size: 12px;
+  background-color: $color-5;
+  height: 30px;
+}
+
+.progress > p{
+  padding: 5px;
+}
+
+
+// MOOD
+
+.purple {
+  background-color: $color-1;
+}
+
+.red {
+  background-color: $color-2;
+}
+
+.blue {
+  background-color: $color-3;
+}
+
+.yellow {
+  background-color: $color-4;
+}
+
+.green {
+  background-color: $color-5;
+}
+
+
+#float-tracker{
+  height: 300px;
+  width: 250px;
+}
+
+#float-tracker > ul > li > button{
+  width: 150px;
+  text-align: left;
+
+}
+
+// 8 BALL
+
+#float-8ball{
+  height: 170px;
+  width: 300px;
+}
+
+#ball-ask{
+  position: relative;
+  //top: 20px;
+  height: 30px;
+  width: 100%;
+}
+
+.ball-msj {
+  position: relative;
+  top: 10px;
+}
+
