@@ -17,14 +17,6 @@ body {
     padding: 10px;
   }
 
-  /*
- .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-  }*/
-
 .titlu > h1 {
     font-size: 30px;
 }
@@ -157,105 +149,86 @@ a, a:hover{
   right: 50%;
 }
 
-// GRID BACKGROUND NU E TERMINAT
+// BACKGROUND 
 
-// .grid-backgrounds {
-//   display:grid;
-//   grid-template-columns: repeat(1,0.5fr);
-//   row-gap: 2em;
-//   column-gap: 2em;
-// }
-
-// .background{
-//   border: 1px solid;
-//   width: 100%;
-// }
-
-* {
-  box-sizing: border-box;
+#float-background{
+  background: rgba(255, 255, 255, 0.5);
 }
 
-/* Position the image container (needed to position the left and right arrows) */
-.container {
+.carousel-container {
   position: relative;
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  border-radius: 15px;
+  // box-shadow: 0px 12px white;
 }
-
-/* Hide the images by default */
-.mySlides {
+.carousel-container img{
   display: none;
+  border-radius: 10px;
+}
+.carousel-container img.image-active{
+  display: block;
+  width: 100%;
+  // height: 400px;
 }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
+.btn-carousel{
   position: absolute;
   top: 0;
-}
-
-/* Container for image text */
-.caption-container {
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
   text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+  outline: none;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.btn-prev{
+  left:0;
 }
 
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
+.btn-next{
+  right:0;
 }
 
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
+.icon-carousel{
+  color: #fff;
+  opacity: 0.5;
+  transition: all 0.15s ease;
+}
+.icon-carousel:hover{
+  // color: white;
+  opacity: 0.9;
 }
 
-.active,
-.demo:hover {
-  opacity: 1;
+.icon-carousel:active{
+  opacity: 0.5;
+}
+
+.icon-next, .icon-prev{
+  font-size: 35px;
+}
+
+
+// AMBIENCE 
+
+h3{
+  font-family: 'Julius Sans One';
+  font-size: 20px;
+  text-align: center;
+}
+
+
+#float-ambience {
+  background: rgba(255, 255, 255, 0.5);
+  padding-left: 20px;
 }
 
 h3{
@@ -292,9 +265,6 @@ h3{
   color: $color-1;
 }
 
-// #bulina{
-//   font-size: 10px;
-// }
 
 .newTask{
   border-radius: 1px solid grey;
@@ -320,8 +290,6 @@ h3{
 
 
 // MOOD
-
-
 
 .purple {
   background-color: $color-1;

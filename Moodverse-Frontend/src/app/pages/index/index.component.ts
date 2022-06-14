@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
 import { AmbienceService } from 'src/app/services/ambience.service';
@@ -8,7 +8,7 @@ import { QuoteService } from 'src/app/services/quote.service';
 import { StreakService } from 'src/app/services/streak.service';
 
 @Component({
-  selector: 'app-index',
+  selector: "app-index",
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
@@ -16,30 +16,32 @@ export class IndexComponent implements OnInit {
   public isEnabled: boolean = true;
   public admin: boolean = false;
   public newTask!: any;
-  backgrounds: boolean = false;
-  ambiences: boolean = false;
-  quotes: boolean = false;
-  todolists: boolean = false;
-  moodTracker: boolean = false;
-  ball: boolean = false;
-  ballmsj: string = "Prediction..."
-  quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
-  author: string = "Walt Whitman";
-  quoteExists!: false;
-  streakNumber: number = 0;
+  public backgrounds: boolean = false;
+  public ambiences: boolean = false;
+  public quotes: boolean = false;
+  public todolists: boolean = false;
+  public moodTracker: boolean = false;
+  public ball: boolean = false;
+  public ballmsj: string = "Prediction..."
+  public quoteOfTheDay: string = "The bad news is time flies. The good news is you’re the pilot.";
+  public author: string = "Walt Whitman";
+  public quoteExists!: false;
+  public streakNumber: number = 0;
   public tasks : string[] = [];
   public users:any[]=[];
-  public backgroundsList:any[]=[];
-  public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
   public checkedTasks:number[] = [];
   public isDisabled:boolean[] = [];
   public progress:number = 0;
   public ambiencesList:any[]=[];
-  toggle1: boolean = false;
-  toggle2: boolean = false;
-  toggle3: boolean = false;
-  toggle4: boolean = false;
-  culoare: boolean = false;
+  public toggle1: boolean = false;
+  public toggle2: boolean = false;
+  public toggle3: boolean = false;
+  public toggle4: boolean = false;
+  public culoare: boolean = false;
+  public currentBackground:string= "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
+  public backgroundsList:any[]=[];
+  public selectedIndex: number=0;
+  @Input() controls=true;
 
   constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
 
@@ -220,6 +222,23 @@ export class IndexComponent implements OnInit {
     })
   }
 
+  onPrevClick(){
+    if (this.selectedIndex === 0){
+      this.selectedIndex = this.backgroundsList.length - 1;
+    }
+    else {
+      this.selectedIndex--;
+    }
+  }
+  onNextClick(){
+    if (this.selectedIndex === this.backgroundsList.length - 1){
+      this.selectedIndex = 0;
+    }
+    else {
+      this.selectedIndex++;
+    }
+  }
+
   enableDisableRule1(){
     this.toggle4 = true;
     this.toggle2 = true;
@@ -258,4 +277,5 @@ export class IndexComponent implements OnInit {
     this.toggle4 = false;
     this.culoare = false;
   }
+
 }
