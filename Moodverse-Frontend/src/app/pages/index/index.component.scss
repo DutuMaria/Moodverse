@@ -105,8 +105,11 @@ ul>li {
 
 #streak {
   position: fixed;
-  top: 20px;
-  right: 15%;
+  top: 33px;
+  right: 10%;
+  font-size: 20px;
+  color:black;
+  text-shadow: 2px 2px 2px white;
 }
 
 #profil {
@@ -159,7 +162,7 @@ a:hover {
 
 #float-background {
   background: rgba(255, 255, 255, 0.5);
-  height: 350px;
+  height: 285px;
   width: 400px;
 }
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moodverse.DAL;
 using Moodverse.DAL.Entities;
+using Moodverse.DAL.Models;
 
 namespace Moodverse.Controllers
 {
@@ -27,13 +28,15 @@ namespace Moodverse.Controllers
         }
 
         [HttpPost("AddAmbience")]
-        [Authorize("admin")]
-        public async Task<IActionResult> AddAmbience([FromBody] Ambience ambience)
+        //[Authorize("admin")]
+        public async Task<IActionResult> AddAmbience(AmbienceModel model)
         {
-            if (ambience.Id == 0)
+
+            var ambience = new Ambience
             {
-                return BadRequest("Id is 0!");
-            }
+                Sound = model.Sound,
+                AmbienceName = model.AmbienceName
+            };
 
             await _context.Ambiences.AddAsync(ambience);
 
@@ -124,7 +127,7 @@ namespace Moodverse.Controllers
 
 
         [HttpDelete("DeleteAmbience/{id}")]
-        [Authorize("admin")]
+        //[Authorize("admin")]
         public async Task<IActionResult> DeleteAmbience([FromRoute] int id)
         {
             if (id == 0)

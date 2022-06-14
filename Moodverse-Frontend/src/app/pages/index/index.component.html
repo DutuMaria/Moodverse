@@ -18,30 +18,31 @@
 <body background={{currentBackground}}>
     <div class="grid-container">
         <div class="titlu">
-          <h1>Moodverse</h1>
-          <ul>
-            <div>
-                <li><a href="/login"><button id="login" class="btn btn-light" *ngIf = "isEnabled"><span class="glyphicon glyphicon-log-in"></span>  Login</button></a></li>
-            </div>
-            <div>
-                <li><a href="/register"><button id="register" class="btn btn-light" *ngIf = "isEnabled"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li>
-            </div>
-          </ul>
+            <h1>Moodverse</h1>
+            <ul>
+                <div>
+                    <li><a href="/login"><button id="login" class="btn btn-light" *ngIf="isEnabled"><span
+                                    class="glyphicon glyphicon-log-in"></span> Login</button></a></li>
+                </div>
+                <div>
+                    <li><a href="/register"><button id="register" class="btn btn-light" *ngIf="isEnabled"><span
+                                    class="glyphicon glyphicon-user"></span> Sign Up</button></a></li>
+                </div>
+            </ul>
         </div>
         <div class="profil-streak" *ngIf="!isEnabled">
             <ul>
                 <div id="streak">
                     <li class="profil-list">
-                        <p>{{streakNumber}}</p>
-                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <p><i class="fa-solid fa-fire-flame-curved"></i> {{streakNumber}}</p>
                     </li>
                 </div>
-                <div id="profil">
+                <!-- <div id="profil">
                     <li class="profil-list">
-                        <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span
-                                class="textbuton">Profile</span></button>
+                        <a href="/profile"><button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span
+                                class="textbuton">Profile</span></button></a>
                     </li>
-                </div>
+                </div> -->
                 <div id="logout">
                     <li class="profil-list">
                         <button type="button" class="btn btn-light" (click)="doLogout()"><i
@@ -77,14 +78,16 @@
                             Do List</span></button>
                 </li>
                 <li>
-                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="moodTracker" (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span class="textbuton">Mood Tracker</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="moodTracker"
+                        (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span
+                            class="textbuton">Mood Tracker</span></button>
                 </li>
             </ul>
         </div>
     </div>
 
     <div *ngIf="backgrounds" class="float-div" id="float-background" cdkDrag>
-        <h3>Background images</h3>
+        <h3><i class="fa-solid fa-camera"></i> Background images</h3>
         <div class="carousel-container">
             <img *ngFor="let background of backgroundsList; let i=index" src="/assets/{{background.image}}"
                 [alt]="background.backgroundName" [ngClass]="{'image-active': selectedIndex === i}"
@@ -104,7 +107,7 @@
     </div>
 
     <div *ngIf="ambiences" class="float-div" id="float-ambience" cdkDrag>
-        <h3>Ambience sounds</h3>
+        <h3><i class="fa-solid fa-music"></i> Ambience sounds</h3>
         <div>
             <a *ngFor="let ambience of ambiencesList">
                 <div><b>{{ambience['ambienceName']}}</b></div>
@@ -146,36 +149,7 @@
             </div>
         </div>
     </div>
-        <div *ngIf="moodTracker"  class="float-div" id="float-tracker" cdkDrag>
-            
-                <ul>
-                    <li>
-                        <h3>Mood Tracker</h3>
-                    </li>
-                    <li  class="mood-center">
-                        <p>How do you feel?</p>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule1()" [disabled]="toggle1" [ngClass]="{'purple': culoare, 'red': !culoare}"><i class="fa-solid fa-face-angry fa-lg"></i><span> angry</span></button>
-                        <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule2()" [disabled]="toggle2" [ngClass]="{'blue': culoare, 'red': !culoare}"><i class="fa-solid fa-face-frown fa-lg"></i><span> sad</span></button>
-                       <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule3()" [disabled]="toggle3" [ngClass]="{'yellow': culoare, 'red': !culoare}"><i class="fa-solid fa-face-smile fa-lg"></i><span> good</span></button>
-                        <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule4()" [disabled]="toggle4" [ngClass]="{'green': culoare, 'red': !culoare}"><i class="fa-solid fa-face-laugh-beam fa-lg"></i><span> very happy</span></button>                        
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="reset()" >Reset</button>                        
-                    </li>
-                </ul>
-        </div>
-
+    <div *ngIf="moodTracker" class="float-div" id="float-tracker" cdkDrag>
         <ul id="mood">
             <li>
                 <h3>Mood Tracker</h3>
