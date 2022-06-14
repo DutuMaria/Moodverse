@@ -15,9 +15,9 @@ export class AmbienceService {
     }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAllAmbiences(){
+  getAllAmbiences() {
     return this.http.get(this.baseUrl + 'api/Ambience/GetAmbiences', this.privateHttpHeaders);
   }
 

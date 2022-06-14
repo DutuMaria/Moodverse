@@ -16,16 +16,16 @@ export class QuoteService {
     }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAllQuotes(){
+  getAllQuotes() {
     return this.http.get(
       this.baseUrl + 'api/DailyQuote/GetDailyQuotes',
       this.privateHttpHeaders
     )
   }
 
-  getMessageById(id:any){
+  getMessageById(id: any) {
     return this.http.get(
       this.baseUrl + 'api/DailyQuote/GetMessageById/' + id,
       this.privateHttpHeaders
@@ -41,7 +41,7 @@ export class QuoteService {
     );
   }
 
-  deleteQuote(id: any){
+  deleteQuote(id: any) {
     return this.http.delete(
       this.baseUrl + 'api/DailyQuote/DeleteDailyQuote/' + id,
       this.privateHttpHeaders

@@ -11,7 +11,7 @@ describe('AdminPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminPageComponent ],
+      declarations: [AdminPageComponent],
       imports: [
         HttpClientModule,
         RouterTestingModule,
@@ -19,7 +19,7 @@ describe('AdminPageComponent', () => {
         ReactiveFormsModule,
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AdminPageComponent);
     component = fixture.componentInstance;

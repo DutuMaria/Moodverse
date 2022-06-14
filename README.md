@@ -24,10 +24,10 @@
 
 ### B. Procesul de dezvoltare software - notă între 1 și 10
 Acesta constă din următoarele părți:
-- [ ] user stories (minim 10), backlog creation - **2 pct**
-- [ ] design/arhitectura/UML - **2 pct**
-- [ ] source control (branch creation, merge/rebase, minim 10 commits) - **2 pct**
-- [ ] teste automate (unit sau integration) - minim 5 - **3 pct**
+- [x] user stories (minim 10), backlog creation - **2 pct**
+- [x] design/arhitectura/UML - **2 pct**
+- [x] source control (branch creation, merge/rebase, minim 10 commits) - **2 pct**
+- [x] teste automate (unit sau integration) - minim 5 - **3 pct**
 - [ ] bug reporting - **1 pct**
 - [ ] folosirea unui build tool - **1 pct**
 - [ ] refactoring (minim 1), code standards - **1 pct**

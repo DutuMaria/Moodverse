@@ -24,7 +24,7 @@ import { CarouselModule } from './carousel/carousel.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

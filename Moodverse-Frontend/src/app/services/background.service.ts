@@ -6,17 +6,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class BackgroundService {
-  private baseUrl:string = environment.baseUrl;
+  private baseUrl: string = environment.baseUrl;
   private privateHttpHeaders = {
     headers: new HttpHeaders({
       'content-type': 'application/json',
       'responseType': 'text',
-      Authorization: 'Bearer ' +  localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
     })
   };
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllBackgrounds(){
+  getAllBackgrounds() {
     return this.http.get(this.baseUrl + 'api/Background/GetBackgrounds', this.privateHttpHeaders);
   }
 }

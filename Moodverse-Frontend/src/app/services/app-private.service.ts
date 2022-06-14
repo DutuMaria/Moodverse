@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AppPrivateService {
 
-  private baseUrl:string=environment.baseUrl;
+  private baseUrl: string = environment.baseUrl;
 
   private privateHttpHeaders = {
     headers: new HttpHeaders({
@@ -16,8 +16,8 @@ export class AppPrivateService {
     }),
   };
 
-  constructor(private http:HttpClient) { }
-  
+  constructor(private http: HttpClient) { }
+
   checkIfAdmin(email: string) {
     return this.http.get(
       this.baseUrl + 'api/Role/checkIfAdmin/' + email,

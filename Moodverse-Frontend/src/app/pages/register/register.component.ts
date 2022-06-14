@@ -11,40 +11,40 @@ import { StreakService } from 'src/app/services/streak.service';
 })
 
 export class RegisterComponent implements OnInit {
-  public registerForm!:FormGroup;
-  public text:string = '';
+  public registerForm!: FormGroup;
+  public text: string = '';
 
   // cu formBuilder se creeaza un form group
-  constructor(private formBuilder:FormBuilder, private router:Router, private authenticationService:AuthenticationService, private streakService: StreakService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: AuthenticationService, private streakService: StreakService) { }
 
   ngOnInit(): void {
     this.text = "REGISTER";
     this.registerForm = this.formBuilder.group(
       {
-        email : ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email]],
         // username : ['', [Validators.required]],
-        password : ['', [Validators.required]],
-        confirmPassword : ['', [Validators.required]],
-        role : ['User']
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
+        role: ['User']
       }, { validators: this.checkPasswords }
     );
   }
 
-  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     // ? nu da eroare daca parola e null
     let password = group.get('password')?.value;
     let confirmPassword = group.get('confirmPassword')?.value
     return password === confirmPassword ? null : { passwordsMismatched: true }
   }
 
-  doRegister(){
+  doRegister() {
     console.log(this.registerForm);
     if (this.registerForm.valid) {
       this.authenticationService
         .register(this.registerForm.value)
         .subscribe((response: any) => {
           console.log(response);
-          this.streakService.createStreak().subscribe((response:any) => {
+          this.streakService.createStreak().subscribe((response: any) => {
             console.log(response);
           })
         });
