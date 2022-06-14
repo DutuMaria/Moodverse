@@ -39,9 +39,7 @@ export class IndexComponent implements OnInit {
   public toggle4: boolean = false;
   public culoare: boolean = false;
   public timer: boolean = false;
-  public timerTotalValue: number = 0;
-  public defaultMin: number = 30;
-  public defaultHour: number = 1;
+  public timerTotalValue: number = 5400;
   public currentBackground: string = "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
   public backgroundsList: any[] = [];
   public selectedIndex: number = 0;
@@ -287,29 +285,12 @@ export class IndexComponent implements OnInit {
     else this.timer = true;
   }
 
-  calculateTimerValue(a: any, b: any){
-    console.log("aaa");
-    // console.log(this.defaultHour);
-    // console.log(this.defaultMin);
-    var hours = document.getElementById('hours')?.attributes.getNamedItem("value")?.value;
+  calculateTimerValue(currentHours:any, currentMinutes:any){
+    var hours = currentHours;
     var hoursToSeconds =  Number(hours) * 3600;
-    var minutes = document.getElementById('minutes')?.attributes.getNamedItem("value")?.value;
+    var minutes = currentMinutes;
     var minutesToSeconds = Number(minutes) * 60;
     this.timerTotalValue = hoursToSeconds + minutesToSeconds;
-    console.log(hours);
-    // console.log(hoursToSeconds);
-    console.log(minutes);
-    // console.log(minutesToSeconds);
-    // console.log(this.timerTotalValue);
-  }
-
-  changedValue(event:any){
-    if (event.target.value.length > 0) {
-      const file = event.target.files[0];
-      console.log(file.name);
-    }
-    console.log("bbb");
-    // this.calculateTimerValue();
   }
 
 }
