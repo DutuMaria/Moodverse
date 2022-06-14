@@ -1,6 +1,6 @@
 # Moodverse
 
-[//]: # (TODO introducere)
+## Documentation (https://docs.google.com/document/d/1wIn6nfWaczCQ40ZIAO7h8x_K5OlrtVVFI38nepe6frk/edit#heading=h.3085icgq9mqg)
 
 ## Team Members
 - [Anghelache Andreea](https://github.com/deeaanghelache)
@@ -28,9 +28,9 @@ Acesta constă din următoarele părți:
 - [x] design/arhitectura/UML - **2 pct**
 - [x] source control (branch creation, merge/rebase, minim 10 commits) - **2 pct**
 - [x] teste automate (unit sau integration) - minim 5 - **3 pct**
-- [ ] bug reporting - **1 pct**
+- [x] bug reporting - **1 pct**
 - [ ] folosirea unui build tool - **1 pct**
-- [ ] refactoring (minim 1), code standards - **1 pct**
+- [x] refactoring (minim 1), code standards - **1 pct**
 - [ ] design patterns - **1 pct**
 
 ### Comenzi migratii

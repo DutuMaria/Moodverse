@@ -208,24 +208,21 @@
         </ul>
     </div>
     <div *ngIf="timer" class="float-div" id="float-timer" cdkDrag>
-        <!-- <p><i>{{}}</i> ~ <b>{{}}</b></p> -->
         <ul id="">
             <li>
                 <h3><i class="fa-solid fa-stopwatch-20"></i> Timer</h3>
             </li>
             <li>
-                <!-- <input [value]="currentItem.name" (input)="currentItem.name=getValue($event)"> -->
-                <input type="number" id="hours" name="hours" min="0" max="24" value=1 (change)="changedValue($event)">
-                <input type="number" id="minutes" name="minutes" min="0" max="59" value=30 (change)="changedValue($event)">
-                <!-- <input type="number" id="hours" name="hours" min="0" max="24" value="1" (change)="calculateTimerValue()">
-                <input type="number" id="minutes" name="minutes" min="0" max="59" value="30" (change)="calculateTimerValue()"> -->
+                <input type="number" id="hours" name="hours" min="0" max="24" value=1 #hours>
+                <input type="number" id="minutes" name="minutes" min="0" max="59" value=30 #minutes>
             </li>
             <li>
                 <countdown #countdown [config]="{leftTime: timerTotalValue, demand: true}"></countdown>
-                <button (click)="calculateTimerValue();countdown.resume()">Start</button>
-                <button (click)="countdown.pause()">Pause</button>
-                <button (click)="countdown.resume()">Resume</button>
-                <button (click)="countdown.restart()">Reset</button>
+                <button class="btn btn-light" (click)="calculateTimerValue(hours.value, minutes.value)">Set Timer</button>
+                <button class="btn btn-light" (click)="countdown.resume()">Start</button>
+                <button class="btn btn-light" (click)="countdown.pause()">Pause</button>
+                <button class="btn btn-light" (click)="countdown.resume()">Resume</button>
+                <button class="btn btn-light" (click)="countdown.restart()">Reset</button>
             </li>
         </ul>
     </div>
