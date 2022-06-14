@@ -10,6 +10,7 @@ export class BackgroundService {
   private privateHttpHeaders = {
     headers: new HttpHeaders({
       'content-type': 'application/json',
+      'responseType': 'text',
       Authorization: 'Bearer ' +  localStorage.getItem('token')
     })
   };

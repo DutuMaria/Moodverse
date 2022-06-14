@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CarouselModule } from './carousel/carousel.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

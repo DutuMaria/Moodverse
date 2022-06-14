@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
 import { AmbienceService } from 'src/app/services/ambience.service';
@@ -8,7 +8,7 @@ import { QuoteService } from 'src/app/services/quote.service';
 import { StreakService } from 'src/app/services/streak.service';
 
 @Component({
-  selector: 'app-index',
+  selector: "app-index",
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
@@ -25,7 +25,9 @@ export class IndexComponent implements OnInit {
   streakNumber: number = 0;
   public users:any[]=[];
   public backgroundsList:any[]=[];
-  public currentBackground:string= "/assets/pauline-heidmets-GTL39WM6QqA-unsplash.jpg";
+  @Input() controls=true;
+  public selectedIndex: number=0;
+  public currentBackground:string= "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
   public ambiencesList:any[]=[];
 
   constructor(private privateService:AppPrivateService,private ambienceService:AmbienceService, private streakService:StreakService, private quoteService:QuoteService, private backgroundService:BackgroundService, private router:Router) { }
@@ -147,5 +149,23 @@ export class IndexComponent implements OnInit {
       console.log(this.ambiencesList[0]);
     })
   }
+
+  onPrevClick(){
+    if (this.selectedIndex === 0){
+      this.selectedIndex = this.backgroundsList.length - 1;
+    }
+    else {
+      this.selectedIndex--;
+    }
+  }
+  onNextClick(){
+    if (this.selectedIndex === this.backgroundsList.length - 1){
+      this.selectedIndex = 0;
+    }
+    else {
+      this.selectedIndex++;
+    }
+  }
+
 
 }
