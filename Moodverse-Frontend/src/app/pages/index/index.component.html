@@ -208,24 +208,30 @@
         </ul>
     </div>
     <div *ngIf="timer" class="float-div" id="float-timer" cdkDrag>
-        <ul id="">
+        <ul>
             <li>
-                <h3><i class="fa-solid fa-stopwatch-20"></i> Timer</h3>
+                <h3>Timer <i class="fa-solid fa-stopwatch-20"></i></h3>
             </li>
+            <div id="timerInput">
+                <li>
+                    <div id="inputUser">
+                        <input type="number" id="hours" name="hours" min="0" max="24" value=1 #hours>
+                        <input type="number" id="minutes" name="minutes" min="0" max="59" value=30 #minutes>
+                    </div>
+                </li>
+            </div>
+            <div id="countdown" class="countdown-glow">
+                <p id="countdownButton"><countdown #countdown [config]="{leftTime: timerTotalValue, demand: true}" class="timp"></countdown></p>
+            </div>
             <li>
-                <input type="number" id="hours" name="hours" min="0" max="24" value=1 #hours>
-                <input type="number" id="minutes" name="minutes" min="0" max="59" value=30 #minutes>
-            </li>
-            <li>
-                <countdown #countdown [config]="{leftTime: timerTotalValue, demand: true}"></countdown>
-                <button class="btn btn-light" (click)="calculateTimerValue(hours.value, minutes.value)">Set Timer</button>
-                <button class="btn btn-light" (click)="countdown.resume()">Start</button>
-                <button class="btn btn-light" (click)="countdown.pause()">Pause</button>
-                <button class="btn btn-light" (click)="countdown.resume()">Resume</button>
-                <button class="btn btn-light" (click)="countdown.restart()">Reset</button>
+                <div id="inputSet"><button class="btn btn-light" (click)="calculateTimerValue(hours.value, minutes.value)">Set Timer</button></div>
+                <div id="inputStart"><button class="btn btn-light" (click)="countdown.resume()"><i class="fa-solid fa-play"></i></button></div>
+                <div id="inputPause"><button class="btn btn-light" (click)="countdown.pause()"><i class="fa-solid fa-pause"></i></button></div>
+                <div id="inputResume"><button class="btn btn-light" (click)="countdown.resume()"><i class="fa-solid fa-circle-play"></i></button></div>
+                <div id="inputReset"><button class="btn btn-light" (click)="countdown.restart()"><i class="fa-solid fa-arrow-rotate-left"></i></button></div>
             </li>
         </ul>
     </div>
 </body>
-
+  
 </html>
