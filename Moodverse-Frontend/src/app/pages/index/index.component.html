@@ -18,15 +18,17 @@
 <body background={{currentBackground}}>
     <div class="grid-container">
         <div class="titlu">
-          <h1>Moodverse</h1>
-          <ul>
-            <div>
-                <li><a href="/login"><button id="login" class="btn btn-light" *ngIf = "isEnabled"><span class="glyphicon glyphicon-log-in"></span>  Login</button></a></li>
-            </div>
-            <div>
-                <li><a href="/register"><button id="register" class="btn btn-light" *ngIf = "isEnabled"><span class="glyphicon glyphicon-user"></span> Sign Up</button></a></li>
-            </div>
-          </ul>
+            <h1>Moodverse</h1>
+            <ul>
+                <div>
+                    <li><a href="/login"><button id="login" class="btn btn-light" *ngIf="isEnabled"><span
+                                    class="glyphicon glyphicon-log-in"></span> Login</button></a></li>
+                </div>
+                <div>
+                    <li><a href="/register"><button id="register" class="btn btn-light" *ngIf="isEnabled"><span
+                                    class="glyphicon glyphicon-user"></span> Sign Up</button></a></li>
+                </div>
+            </ul>
         </div>
         <div class="profil-streak" *ngIf="!isEnabled">
             <ul>
@@ -36,12 +38,12 @@
                         <i class="fa-solid fa-fire-flame-curved"></i>
                     </li>
                 </div>
-                <div id="profil">
+                <!-- <div id="profil">
                     <li class="profil-list">
-                        <button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span
-                                class="textbuton">Profile</span></button>
+                        <a href="/profile"><button type="button" class="btn btn-light"><i class="fa-solid fa-user"></i><br><span
+                                class="textbuton">Profile</span></button></a>
                     </li>
-                </div>
+                </div> -->
                 <div id="logout">
                     <li class="profil-list">
                         <button type="button" class="btn btn-light" (click)="doLogout()"><i
@@ -67,6 +69,9 @@
                             class="fa-solid fa-comment-dots"></i><br><span class="textbuton">8 Ball</span></button>
                 </li>
                 <li>
+                    <button type="button" class="btn btn-light" id="timer" (click)="timerFunction()"><i class="fa-solid fa-stopwatch-20"></i><br><span class="textbuton">Timer</span></button>
+                </li>
+                <li>
                     <button type="button" [disabled]="isEnabled" class="btn btn-light" id="quote"
                         (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span
                             class="textbuton">Daily Quote</span></button>
@@ -77,7 +82,9 @@
                             Do List</span></button>
                 </li>
                 <li>
-                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="moodTracker" (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span class="textbuton">Mood Tracker</span></button>
+                    <button type="button" [disabled]="isEnabled" class="btn btn-light" id="moodTracker"
+                        (click)="moodTrackerFunction()"><i class="fa-solid fa-face-grin"></i><br><span
+                            class="textbuton">Mood Tracker</span></button>
                 </li>
             </ul>
         </div>
@@ -146,36 +153,7 @@
             </div>
         </div>
     </div>
-        <div *ngIf="moodTracker"  class="float-div" id="float-tracker" cdkDrag>
-            
-                <ul>
-                    <li>
-                        <h3>Mood Tracker</h3>
-                    </li>
-                    <li  class="mood-center">
-                        <p>How do you feel?</p>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule1()" [disabled]="toggle1" [ngClass]="{'purple': culoare, 'red': !culoare}"><i class="fa-solid fa-face-angry fa-lg"></i><span> angry</span></button>
-                        <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule2()" [disabled]="toggle2" [ngClass]="{'blue': culoare, 'red': !culoare}"><i class="fa-solid fa-face-frown fa-lg"></i><span> sad</span></button>
-                       <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule3()" [disabled]="toggle3" [ngClass]="{'yellow': culoare, 'red': !culoare}"><i class="fa-solid fa-face-smile fa-lg"></i><span> good</span></button>
-                        <br>
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="enableDisableRule4()" [disabled]="toggle4" [ngClass]="{'green': culoare, 'red': !culoare}"><i class="fa-solid fa-face-laugh-beam fa-lg"></i><span> very happy</span></button>                        
-                    </li>
-                    <li class="mood-center">
-                        <button type="button" class="btn btn-light" (click)="reset()" >Reset</button>                        
-                    </li>
-                </ul>
-        </div>
-
+    <div *ngIf="moodTracker" class="float-div" id="float-tracker" cdkDrag>
         <ul id="mood">
             <li>
                 <h3>Mood Tracker</h3>
@@ -229,7 +207,28 @@
                 </div>
             </li>
         </ul>
-
+    </div>
+    <div *ngIf="timer" class="float-div" id="float-timer" cdkDrag>
+        <!-- <p><i>{{}}</i> ~ <b>{{}}</b></p> -->
+        <ul id="">
+            <li>
+                <h3><i class="fa-solid fa-stopwatch-20"></i> Timer</h3>
+            </li>
+            <li>
+                <!-- <input [value]="currentItem.name" (input)="currentItem.name=getValue($event)"> -->
+                <input type="number" id="hours" name="hours" min="0" max="24" value=1 (change)="changedValue($event)">
+                <input type="number" id="minutes" name="minutes" min="0" max="59" value=30 (change)="changedValue($event)">
+                <!-- <input type="number" id="hours" name="hours" min="0" max="24" value="1" (change)="calculateTimerValue()">
+                <input type="number" id="minutes" name="minutes" min="0" max="59" value="30" (change)="calculateTimerValue()"> -->
+            </li>
+            <li>
+                <countdown #countdown [config]="{leftTime: timerTotalValue, demand: true}"></countdown>
+                <button (click)="calculateTimerValue();countdown.resume()">Start</button>
+                <button (click)="countdown.pause()">Pause</button>
+                <button (click)="countdown.resume()">Resume</button>
+                <button (click)="countdown.restart()">Reset</button>
+            </li>
+        </ul>
     </div>
 </body>
 

@@ -105,7 +105,7 @@ describe('LoginComponent', () => {
   it('CHECK BUTTON function doLogin', () => {
     spyOn(component, 'doLogin');
 
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    let button = fixture.debugElement.nativeElement.querySelectorAll('button')[1];
     button.click();
 
     fixture.whenStable().then(() => {

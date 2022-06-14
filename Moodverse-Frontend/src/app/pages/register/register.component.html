@@ -55,7 +55,7 @@
                         <br>
                         <input class="form-control"
                             [ngClass]="registerForm.controls['password'].errors ? 'is-invalid' : ''"
-                            formControlName="password" placeholder="example: User@123" required />
+                            formControlName="password" placeholder="example: User@123" required type="password"/>
                     </div>
 
                     <!-- <br> -->
@@ -65,7 +65,7 @@
                         <br>
                         <input class="form-control"
                             [ngClass]="registerForm.controls['confirmPassword'].errors ? 'is-invalid' : ''"
-                            formControlName="confirmPassword" placeholder="Confirm your password" required />
+                            formControlName="confirmPassword" placeholder="Confirm your password" required type="password"/>
                     </div>
                 </div>
 

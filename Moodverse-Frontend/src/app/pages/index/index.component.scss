@@ -98,6 +98,7 @@ ul>li {
 #todolist,
 #background,
 #ambience,
+#timer,
 #ball {
   height: 100%;
   width: 100%;
@@ -375,4 +376,11 @@ h3 {
   width: 400px;
   position: relative;
   overflow: scroll;
+}
+
+// Timer
+
+#float-timer {
+  background: rgba(255, 255, 255, 0.5);
+  width: 200px;
 }

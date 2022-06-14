@@ -56,7 +56,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   addBackground() {
-
+    console.log(this.addBackgroundForm);
   }
 
   addQuote() {
