@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AmbienceService } from 'src/app/services/ambience.service';
@@ -38,12 +38,16 @@ export class IndexComponent implements OnInit {
   public toggle3: boolean = false;
   public toggle4: boolean = false;
   public culoare: boolean = false;
+  public timer: boolean = false;
+  public timerTotalValue: number = 0;
+  public defaultMin: number = 30;
+  public defaultHour: number = 1;
   public currentBackground: string = "/assets/louis-droege-zF9g4xMqmEI-unsplash.jpg";
   public backgroundsList: any[] = [];
   public selectedIndex: number = 0;
   @Input() controls = true;
 
-  constructor(private privateService: AppPrivateService, private ambienceService: AmbienceService, private streakService: StreakService, private quoteService: QuoteService, private backgroundService: BackgroundService, private router: Router) { }
+  constructor(private privateService: AppPrivateService, private ambienceService: AmbienceService, private streakService: StreakService, private quoteService: QuoteService, private backgroundService: BackgroundService, private router: Router, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getUserStatus();
@@ -276,6 +280,36 @@ export class IndexComponent implements OnInit {
     this.toggle3 = false;
     this.toggle4 = false;
     this.culoare = false;
+  }
+
+  timerFunction(){
+    if (this.timer == true) this.timer = false;
+    else this.timer = true;
+  }
+
+  calculateTimerValue(){
+    console.log("aaa");
+    // console.log(this.defaultHour);
+    // console.log(this.defaultMin);
+    var hours = document.getElementById('hours')?.attributes.getNamedItem("value")?.value;
+    var hoursToSeconds =  Number(hours) * 3600;
+    var minutes = document.getElementById('minutes')?.attributes.getNamedItem("value")?.value;
+    var minutesToSeconds = Number(minutes) * 60;
+    this.timerTotalValue = hoursToSeconds + minutesToSeconds;
+    console.log(hours);
+    // console.log(hoursToSeconds);
+    console.log(minutes);
+    // console.log(minutesToSeconds);
+    // console.log(this.timerTotalValue);
+  }
+
+  changedValue(event:any){
+    if (event.target.value.length > 0) {
+      const file = event.target.files[0];
+      console.log(file.name);
+    }
+    console.log("bbb");
+    this.calculateTimerValue();
   }
 
 }

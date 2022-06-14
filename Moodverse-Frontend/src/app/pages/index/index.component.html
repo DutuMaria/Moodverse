@@ -68,6 +68,9 @@
                             class="fa-solid fa-comment-dots"></i><br><span class="textbuton">8 Ball</span></button>
                 </li>
                 <li>
+                    <button type="button" class="btn btn-light" id="timer" (click)="timerFunction()"><i class="fa-solid fa-stopwatch-20"></i><br><span class="textbuton">Timer</span></button>
+                </li>
+                <li>
                     <button type="button" [disabled]="isEnabled" class="btn btn-light" id="quote"
                         (click)="quotesFunction()"><i class="fa-solid fa-quote-left"></i><br><span
                             class="textbuton">Daily Quote</span></button>
@@ -203,7 +206,28 @@
                 </div>
             </li>
         </ul>
-
+    </div>
+    <div *ngIf="timer" class="float-div" id="float-timer" cdkDrag>
+        <!-- <p><i>{{}}</i> ~ <b>{{}}</b></p> -->
+        <ul id="">
+            <li>
+                <h3><i class="fa-solid fa-stopwatch-20"></i> Timer</h3>
+            </li>
+            <li>
+                <!-- <input [value]="currentItem.name" (input)="currentItem.name=getValue($event)"> -->
+                <input type="number" id="hours" name="hours" min="0" max="24" value=1 (change)="changedValue($event)">
+                <input type="number" id="minutes" name="minutes" min="0" max="59" value=30 (change)="changedValue($event)">
+                <!-- <input type="number" id="hours" name="hours" min="0" max="24" value="1" (change)="calculateTimerValue()">
+                <input type="number" id="minutes" name="minutes" min="0" max="59" value="30" (change)="calculateTimerValue()"> -->
+            </li>
+            <li>
+                <countdown #countdown [config]="{leftTime: timerTotalValue, demand: true}"></countdown>
+                <button (click)="calculateTimerValue();countdown.resume()">Start</button>
+                <button (click)="countdown.pause()">Pause</button>
+                <button (click)="countdown.resume()">Resume</button>
+                <button (click)="countdown.restart()">Reset</button>
+            </li>
+        </ul>
     </div>
 </body>
 

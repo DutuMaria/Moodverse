@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { CarouselModule } from './carousel/carousel.module';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CarouselModule } from './carousel/carousel.module';
     ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
-    CarouselModule
+    CarouselModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
