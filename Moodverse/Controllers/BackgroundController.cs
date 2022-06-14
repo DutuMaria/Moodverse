@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moodverse.DAL;
 using Moodverse.DAL.Entities;
+using Moodverse.DAL.Models;
 
 namespace Moodverse.Controllers
 {
@@ -27,13 +28,14 @@ namespace Moodverse.Controllers
         }
 
         [HttpPost("AddBackground")]
-        [Authorize("admin")]
-        public async Task<IActionResult> AddBackground([FromBody] Background background)
+        //[Authorize("admin")]
+        public async Task<IActionResult> AddBackground(BackgroundModel model)
         {
-            if (background.Id == 0)
+            var background = new Background
             {
-                return BadRequest("Id is 0!");
-            }
+                Image = model.Image,
+                BackgroundName = model.BackgroundName
+            };
 
             await _context.Backgrounds.AddAsync(background);
 
@@ -123,7 +125,7 @@ namespace Moodverse.Controllers
 
 
         [HttpDelete("DeleteBackground/{id}")]
-        [Authorize("admin")]
+        //[Authorize("admin")]
         public async Task<IActionResult> DeleteBackground([FromRoute] int id)
         {
             if (id == 0)

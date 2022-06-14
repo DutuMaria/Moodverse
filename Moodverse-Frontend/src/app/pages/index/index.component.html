@@ -34,8 +34,7 @@
             <ul>
                 <div id="streak">
                     <li class="profil-list">
-                        <p>{{streakNumber}}</p>
-                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <p><i class="fa-solid fa-fire-flame-curved"></i> {{streakNumber}}</p>
                     </li>
                 </div>
                 <!-- <div id="profil">
@@ -91,7 +90,7 @@
     </div>
 
     <div *ngIf="backgrounds" class="float-div" id="float-background" cdkDrag>
-        <h3>Background images</h3>
+        <h3><i class="fa-solid fa-camera"></i> Background images</h3>
         <div class="carousel-container">
             <img *ngFor="let background of backgroundsList; let i=index" src="/assets/{{background.image}}"
                 [alt]="background.backgroundName" [ngClass]="{'image-active': selectedIndex === i}"
@@ -111,7 +110,7 @@
     </div>
 
     <div *ngIf="ambiences" class="float-div" id="float-ambience" cdkDrag>
-        <h3>Ambience sounds</h3>
+        <h3><i class="fa-solid fa-music"></i> Ambience sounds</h3>
         <div>
             <a *ngFor="let ambience of ambiencesList">
                 <div><b>{{ambience['ambienceName']}}</b></div>

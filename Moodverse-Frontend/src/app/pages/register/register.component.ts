@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppPrivateService } from 'src/app/services/app-private.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { StreakService } from 'src/app/services/streak.service';
 
@@ -13,9 +14,10 @@ import { StreakService } from 'src/app/services/streak.service';
 export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   public text: string = '';
+  public allUsers = [];
 
   // cu formBuilder se creeaza un form group
-  constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: AuthenticationService, private streakService: StreakService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: AuthenticationService, private streakService: StreakService, private appPrivateService: AppPrivateService) { }
 
   ngOnInit(): void {
     this.text = "REGISTER";
@@ -34,16 +36,20 @@ export class RegisterComponent implements OnInit {
     // ? nu da eroare daca parola e null
     let password = group.get('password')?.value;
     let confirmPassword = group.get('confirmPassword')?.value
-    return password === confirmPassword ? null : { passwordsMismatched: true }
+
+    return password === confirmPassword ? null : { 
+      passwordsMismatched: true
+    }
   }
 
   doRegister() {
-    console.log(this.registerForm);
     if (this.registerForm.valid) {
       this.authenticationService
         .register(this.registerForm.value)
         .subscribe((response: any) => {
-          console.log(response);
+          console.log(response.error);
+          console.log("---------------");
+          console.log(response.value.error);
           this.streakService.createStreak().subscribe((response: any) => {
             console.log(response);
           })

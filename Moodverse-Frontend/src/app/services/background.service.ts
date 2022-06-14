@@ -19,4 +19,19 @@ export class BackgroundService {
   getAllBackgrounds() {
     return this.http.get(this.baseUrl + 'api/Background/GetBackgrounds', this.privateHttpHeaders);
   }
+
+  addBackground(data:any){
+    return this.http.post(
+      this.baseUrl + 'api/Background/AddBackground',
+      data,
+      this.privateHttpHeaders
+    );
+  }
+
+  deleteBackground(id: any){
+    return this.http.delete(
+      this.baseUrl + 'api/Background/DeleteBackground/' + id,
+      this.privateHttpHeaders
+    )
+  }
 }
